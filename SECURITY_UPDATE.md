@@ -1,7 +1,7 @@
-# 🔒 Security Update - ACTION REQUIRED
+# 🔒 Security Update - COMPLETED
 
 **Date**: 2026-02-11
-**Status**: ⚠️ URGENT - API Key Compromised
+**Status**: ✅ REZOLVAT - API Key Rotated
 
 ---
 
@@ -23,68 +23,81 @@ git log --all --patch | grep "AIza"
 
 ## ✅ CE AM FĂCUT DEJA
 
-1. ✅ Șters API key din START_HERE.md (commit actual)
+1. ✅ Șters API key VECHI din START_HERE.md
 2. ✅ Adăugat `.claude/` în `.gitignore`
 3. ✅ Repository făcut PUBLIC (pentru dashboard gratuit)
-4. ✅ API key în GitHub Secrets (sigur)
+4. ✅ API key NOU generat: `YOUR_GOOGLE_MAPS_API_KEY`
+5. ✅ API key NOU salvat în GitHub Secrets
+6. ✅ Implementat deduplicare (nu mai adaugă service-uri duplicate)
+7. ✅ Creat ghid FIX_REQUEST_DENIED.md pentru rezolvarea erorilor API
 
 ---
 
-## 🚨 CE TREBUIE SĂ FACI TU (URGENT!)
+## 🚨 CE MAI TREBUIE SĂ FACI (OPȚIONAL, DAR RECOMANDAT!)
 
-### Step 1: Invalidate Old API Key (5 min)
+### Step 1: DELETE Old API Key (RECOMANDAT - 2 min)
+
+⚠️ **Chiar dacă ai key NOU, cel VECHI este încă activ și expus în git history!**
 
 1. **Mergi la Google Cloud Console**:
    https://console.cloud.google.com/apis/credentials
 
-2. **Găsește API key-ul expus**:
+2. **Găsește API key-ul VECHI expus**:
    - Caută în listă: key care începe cu `AIzaSyDNzr7V...`
-   - Sau click pe toate key-urile până găsești pe cel potrivit
+   - Dacă nu îl găsești, înseamnă că l-ai șters deja ✅
 
-3. **DELETE key-ul**:
+3. **DELETE key-ul VECHI**:
    - Click pe key → Action menu (⋮) → **Delete**
    - Confirmă ștergerea
+   - **Motivație**: Previne abuz de către alții care au văzut key-ul în git history
 
-### Step 2: Generează API Key NOU (5 min)
+### Step 2: Fix REQUEST_DENIED Errors (NECESAR - 5 min)
 
-1. **În același Google Cloud Console**:
-   - Click **+ CREATE CREDENTIALS**
-   - Select **API key**
+⚠️ **Încă primești erori `REQUEST_DENIED` când rulezi scraper-ul!**
 
-2. **Restricționează noul key** (IMPORTANT!):
-   - Click pe noul key → **Edit API key**
-   - **API restrictions**: Select APIs → **Places API** (DOAR asta!)
-   - **Application restrictions**: None (pentru GitHub Actions)
-   - **Save**
+**Citește ghidul complet**: [FIX_REQUEST_DENIED.md](FIX_REQUEST_DENIED.md)
 
-3. **COPIAZĂ noul key** (începe cu `AIza...`)
+**Quick fix**:
+1. Activează **Place Details API** în Google Cloud Console:
+   ```
+   https://console.cloud.google.com/apis/library
+   ```
+   - Caută: "Places API (New)"
+   - Click **ENABLE**
 
-### Step 3: Actualizează GitHub Secret (2 min)
+2. Verifică **API key restrictions**:
+   ```
+   https://console.cloud.google.com/apis/credentials
+   ```
+   - Click pe key-ul NOU (`AIzaSyA3MbPQXJY6...`)
+   - API restrictions: Selectează "Don't restrict key" (temporar pentru testare)
+   - Click **SAVE**
 
-**Opțiunea A - CLI (rapid)**:
+3. **Activează Billing** (dacă e necesar):
+   ```
+   https://console.cloud.google.com/billing
+   ```
+   - Adaugă card (rămâi în free tier, NU vei fi taxat!)
+
+### Step 3: Testare (2 min)
+
 ```bash
-gh secret set GOOGLE_MAPS_API_KEY --body "NEW_KEY_HERE" --repo thesourr/auto-service-rca-bot
+cd /Users/ionut/Desktop/App-scraping-service-auto
+source venv/bin/activate
+export GOOGLE_MAPS_API_KEY="YOUR_GOOGLE_MAPS_API_KEY"
+
+# Test cu un oraș
+python -c "
+import scrape_services as ss
+ss.SEARCH_QUERIES = ['service auto Cluj-Napoca']
+ss.main()
+"
 ```
 
-**Opțiunea B - Web UI**:
-1. https://github.com/thesourr/auto-service-rca-bot/settings/secrets/actions
-2. Click pe `GOOGLE_MAPS_API_KEY` → **Update secret**
-3. Paste noul key
-4. **Update secret**
-
-### Step 4: Verificare (1 min)
-
-1. **Trigger manual GitHub Actions** (pentru a testa noul key):
-   ```bash
-   gh workflow run scrape.yml --repo thesourr/auto-service-rca-bot
-   ```
-
-2. **Check status**:
-   ```bash
-   gh run watch --repo thesourr/auto-service-rca-bot
-   ```
-
-3. **Ar trebui să fie SUCCESS** ✅
+**Verifică output**:
+- ✅ `[INFO] Loaded XXX existing services` (deduplicare funcționează)
+- ✅ NU mai apar `[WARNING] Place details error: REQUEST_DENIED`
+- ✅ `NEW services added this run: YYY`
 
 ---
 
@@ -191,9 +204,9 @@ Pentru a evita expunerea key-urilor în viitor:
 
 ---
 
-**Status**: ⚠️ AȘTEAPTĂ ACȚIUNE
+**Status**: ✅ API KEY ROTATED - 🔧 FIX REQUEST_DENIED ERRORS
 
-**Next step**: Invalidate old API key NOW!
+**Next step**: Citește [FIX_REQUEST_DENIED.md](FIX_REQUEST_DENIED.md) pentru a rezolva erorile API!
 
 ---
 
