@@ -1,0 +1,20 @@
+{
+  "campaigns": [
+    {
+      "timestamp": "2026-02-11T11:51:35.842549Z",
+      "is_test": true,
+      "total_sent": 1,
+      "total_failed": 0,
+      "results": [
+        {
+          "service_id": "test-email-001",
+          "email": "ionescuionut18@gmail.com",
+          "name": "Test Service Auto - Email de Test",
+          "status": "sent",
+          "timestamp": "2026-02-11T11:51:35.708369Z",
+          "error": null
+        }
+      ]
+    }
+  ]
+}
