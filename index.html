@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service-uri Auto România - Dashboard</title>
+    <meta name="description" content="Listă actualizată cu service-uri auto din România - București, Cluj, Timișoara și alte orașe">
+    <meta name="robots" content="noindex">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .filters {
+            padding: 30px;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        select, input[type="text"] {
+            padding: 10px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            min-width: 200px;
+        }
+
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .button-secondary {
+            background: #64748b;
+        }
+
+        .button-secondary:hover {
+            background: #475569;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background: #f1f5f9;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #334155;
+            cursor: pointer;
+            user-select: none;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        th:hover {
+            background: #e2e8f0;
+        }
+
+        th.sortable::after {
+            content: ' ⇅';
+            opacity: 0.3;
+        }
+
+        th.sort-asc::after {
+            content: ' ↑';
+            opacity: 1;
+        }
+
+        th.sort-desc::after {
+            content: ' ↓';
+            opacity: 1;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-small {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .badge-medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-large {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-unknown {
+            background: #f1f5f9;
+            color: #94a3b8;
+        }
+
+        .rating {
+            color: #fbbf24;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .icon-link {
+            margin-left: 5px;
+            font-size: 0.75rem;
+        }
+
+        .email-cell {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .copy-btn {
+            cursor: pointer;
+            padding: 2px 6px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .copy-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .pagination button {
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: #f1f5f9;
+            border-color: #2563eb;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination .page-info {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #64748b;
+            font-size: 1.125rem;
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #dc2626;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            table {
+                font-size: 0.75rem;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚗 Service-uri Auto România</h1>
+            <p>Dashboard cu service-uri auto actualizat automat</p>
+        </header>
+
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalCount">-</div>
+                <div class="stat-label">Total Service-uri</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="emailCount">-</div>
+                <div class="stat-label">Cu Email</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="largeCount">-</div>
+                <div class="stat-label">Service-uri Mari</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="lastUpdated">-</div>
+                <div class="stat-label">Ultima Actualizare</div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="cityFilter">Oraș</label>
+                    <select id="cityFilter">
+                        <option value="">Toate Orașele</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="searchInput">Caută în nume</label>
+                    <input type="text" id="searchInput" placeholder="Ex: Mercedes, BMW...">
+                </div>
+
+                <div class="filter-group">
+                    <label>Dimensiune</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" value="small" checked> Mici</label>
+                        <label><input type="checkbox" value="medium" checked> Medii</label>
+                        <label><input type="checkbox" value="large" checked> Mari</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-row">
+                <label>
+                    <input type="checkbox" id="emailOnlyFilter">
+                    Doar cu email
+                </label>
+
+                <button class="button button-secondary" onclick="clearFilters()">Resetează Filtre</button>
+                <button class="button" onclick="exportFilteredCSV()">📥 Export CSV</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div id="loading" class="loading">Încărcare date...</div>
+            <div id="error" class="error" style="display: none;"></div>
+            <table id="servicesTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-sort="name">Nume</th>
+                        <th class="sortable" data-sort="city">Oraș</th>
+                        <th class="sortable" data-sort="size">Dimensiune</th>
+                        <th class="sortable" data-sort="rating">Rating</th>
+                        <th class="sortable" data-sort="reviews">Review-uri</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th>Website</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="pagination" style="display: none;">
+            <button onclick="prevPage()">← Anterior</button>
+            <span class="page-info" id="pageInfo"></span>
+            <button onclick="nextPage()">Următor →</button>
+        </div>
+    </div>
+
+    <script>
+        // Configurare
+        const ITEMS_PER_PAGE = 50;
+        let allServices = [];
+        let filteredServices = [];
+        let currentPage = 1;
+        let sortColumn = null;
+        let sortDirection = 'asc';
+
+        // Încărcare date
+        async function loadData() {
+            try {
+                // În producție, înlocuiește cu URL-ul tău GitHub
+                // Ex: https://raw.githubusercontent.com/USERNAME/REPO/main/data/services.xml
+                const response = await fetch('data/services.xml');
+
+                if (!response.ok) {
+                    throw new Error('Nu s-au putut încărca datele');
+                }
+
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+                const services = Array.from(xmlDoc.querySelectorAll('service')).map(s => ({
+                    id: s.querySelector('id')?.textContent || '',
+                    name: s.querySelector('name')?.textContent || '',
+                    size: s.querySelector('size')?.textContent || 'unknown',
+                    email: s.querySelector('email')?.textContent || '',
+                    phone: s.querySelector('phone')?.textContent || '',
+                    website: s.querySelector('website')?.textContent || '',
+                    address: s.querySelector('address')?.textContent || '',
+                    city: s.querySelector('city')?.textContent || '',
+                    rating: parseFloat(s.querySelector('rating')?.textContent) || null,
+                    reviews: parseInt(s.querySelector('reviews')?.textContent) || null,
+                    source: s.querySelector('source')?.textContent || '',
+                    last_updated: s.querySelector('last_updated')?.textContent || ''
+                }));
+
+                allServices = services;
+                updateStats();
+                populateCityFilter();
+                applyFilters();
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('servicesTable').style.display = 'table';
+                document.getElementById('pagination').style.display = 'flex';
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                const errorDiv = document.getElementById('error');
+                errorDiv.textContent = `Eroare: ${error.message}`;
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        // Actualizare statistici
+        function updateStats() {
+            const emailCount = allServices.filter(s => s.email).length;
+            const largeCount = allServices.filter(s => s.size === 'large').length;
+            const lastUpdate = allServices[0]?.last_updated || '';
+
+            document.getElementById('totalCount').textContent = allServices.length;
+            document.getElementById('emailCount').textContent = `${emailCount} (${Math.round(emailCount * 100 / allServices.length)}%)`;
+            document.getElementById('largeCount').textContent = largeCount;
+            document.getElementById('lastUpdated').textContent = lastUpdate ? new Date(lastUpdate).toLocaleDateString('ro-RO') : '-';
+        }
+
+        // Populează dropdown orașul
+        function populateCityFilter() {
+            const cities = [...new Set(allServices.map(s => s.city))].filter(c => c).sort();
+            const select = document.getElementById('cityFilter');
+
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                select.appendChild(option);
+            });
+        }
+
+        // Aplică filtre
+        function applyFilters() {
+            const cityFilter = document.getElementById('cityFilter').value;
+            const searchFilter = document.getElementById('searchInput').value.toLowerCase();
+            const emailOnly = document.getElementById('emailOnlyFilter').checked;
+            const sizeFilters = Array.from(document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked')).map(cb => cb.value);
+
+            filteredServices = allServices.filter(s => {
+                if (cityFilter && s.city !== cityFilter) return false;
+                if (searchFilter && !s.name.toLowerCase().includes(searchFilter)) return false;
+                if (emailOnly && !s.email) return false;
+                if (sizeFilters.length && !sizeFilters.includes(s.size)) return false;
+                return true;
+            });
+
+            currentPage = 1;
+            renderTable();
+        }
+
+        // Sortare
+        function sortBy(column) {
+            if (sortColumn === column) {
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                sortColumn = column;
+                sortDirection = 'asc';
+            }
+
+            filteredServices.sort((a, b) => {
+                let valA = a[column];
+                let valB = b[column];
+
+                if (valA === null || valA === '') return 1;
+                if (valB === null || valB === '') return -1;
+
+                if (typeof valA === 'string') {
+                    valA = valA.toLowerCase();
+                    valB = valB.toLowerCase();
+                }
+
+                if (sortDirection === 'asc') {
+                    return valA > valB ? 1 : -1;
+                } else {
+                    return valA < valB ? 1 : -1;
+                }
+            });
+
+            // Update headers
+            document.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+            });
+            const th = document.querySelector(`th[data-sort="${column}"]`);
+            if (th) {
+                th.classList.add(sortDirection === 'asc' ? 'sort-asc' : 'sort-desc');
+            }
+
+            renderTable();
+        }
+
+        // Render tabel
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            const start = (currentPage - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const pageServices = filteredServices.slice(start, end);
+
+            pageServices.forEach(service => {
+                const row = document.createElement('tr');
+
+                // Nume cu link Google Maps
+                const nameCell = document.createElement('td');
+                const nameLink = document.createElement('a');
+                nameLink.href = `https://www.google.com/maps/place/?q=place_id:${service.id}`;
+                nameLink.target = '_blank';
+                nameLink.textContent = service.name;
+                nameCell.appendChild(nameLink);
+
+                // Oraș
+                const cityCell = document.createElement('td');
+                cityCell.textContent = service.city;
+
+                // Dimensiune cu badge
+                const sizeCell = document.createElement('td');
+                const sizeBadge = document.createElement('span');
+                sizeBadge.className = `badge badge-${service.size}`;
+                sizeBadge.textContent = service.size;
+                sizeCell.appendChild(sizeBadge);
+
+                // Rating
+                const ratingCell = document.createElement('td');
+                if (service.rating) {
+                    ratingCell.innerHTML = `<span class="rating">⭐ ${service.rating.toFixed(1)}</span>`;
+                } else {
+                    ratingCell.textContent = '-';
+                }
+
+                // Reviews
+                const reviewsCell = document.createElement('td');
+                reviewsCell.textContent = service.reviews || '-';
+
+                // Email
+                const emailCell = document.createElement('td');
+                if (service.email) {
+                    const emailDiv = document.createElement('div');
+                    emailDiv.className = 'email-cell';
+                    const emailLink = document.createElement('a');
+                    emailLink.href = `mailto:${service.email}`;
+                    emailLink.textContent = service.email;
+                    const copyBtn = document.createElement('span');
+                    copyBtn.className = 'copy-btn';
+                    copyBtn.textContent = '📋';
+                    copyBtn.title = 'Copiază';
+                    copyBtn.onclick = () => {
+                        navigator.clipboard.writeText(service.email);
+                        copyBtn.textContent = '✓';
+                        setTimeout(() => copyBtn.textContent = '📋', 1000);
+                    };
+                    emailDiv.appendChild(emailLink);
+                    emailDiv.appendChild(copyBtn);
+                    emailCell.appendChild(emailDiv);
+                } else {
+                    emailCell.textContent = '-';
+                }
+
+                // Telefon
+                const phoneCell = document.createElement('td');
+                if (service.phone) {
+                    const phoneLink = document.createElement('a');
+                    phoneLink.href = `tel:${service.phone}`;
+                    phoneLink.textContent = service.phone;
+                    phoneCell.appendChild(phoneLink);
+                } else {
+                    phoneCell.textContent = '-';
+                }
+
+                // Website
+                const websiteCell = document.createElement('td');
+                if (service.website) {
+                    const websiteLink = document.createElement('a');
+                    websiteLink.href = service.website;
+                    websiteLink.target = '_blank';
+                    websiteLink.innerHTML = '🌐';
+                    websiteCell.appendChild(websiteLink);
+                } else {
+                    websiteCell.textContent = '-';
+                }
+
+                row.appendChild(nameCell);
+                row.appendChild(cityCell);
+                row.appendChild(sizeCell);
+                row.appendChild(ratingCell);
+                row.appendChild(reviewsCell);
+                row.appendChild(emailCell);
+                row.appendChild(phoneCell);
+                row.appendChild(websiteCell);
+
+                tbody.appendChild(row);
+            });
+
+            updatePagination();
+        }
+
+        // Paginare
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredServices.length / ITEMS_PER_PAGE);
+            document.getElementById('pageInfo').textContent = `Pagina ${currentPage} din ${totalPages} (${filteredServices.length} rezultate)`;
+
+            const buttons = document.querySelectorAll('.pagination button');
+            buttons[0].disabled = currentPage === 1;
+            buttons[1].disabled = currentPage === totalPages || totalPages === 0;
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(filteredServices.length / ITEMS_PER_PAGE);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderTable();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderTable();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Clear filters
+        function clearFilters() {
+            document.getElementById('cityFilter').value = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('emailOnlyFilter').checked = false;
+            document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => cb.checked = true);
+            applyFilters();
+        }
+
+        // Export CSV
+        function exportFilteredCSV() {
+            const headers = ['Nume', 'Oraș', 'Dimensiune', 'Email', 'Telefon', 'Website', 'Adresă', 'Rating', 'Review-uri'];
+            const rows = filteredServices.map(s => [
+                s.name,
+                s.city,
+                s.size,
+                s.email,
+                s.phone,
+                s.website,
+                s.address,
+                s.rating || '',
+                s.reviews || ''
+            ]);
+
+            const csvContent = [
+                headers.join(','),
+                ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `service-uri-auto-${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        }
+
+        // Event listeners
+        document.getElementById('cityFilter').addEventListener('change', applyFilters);
+        document.getElementById('searchInput').addEventListener('input', debounce(applyFilters, 300));
+        document.getElementById('emailOnlyFilter').addEventListener('change', applyFilters);
+        document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', applyFilters);
+        });
+
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => sortBy(th.dataset.sort));
+        });
+
+        // Debounce helper
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Încarcă datele la load
+        loadData();
+    </script>
+</body>
+</html>
