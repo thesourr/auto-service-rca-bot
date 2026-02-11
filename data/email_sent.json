@@ -15,6 +15,22 @@
           "error": null
         }
       ]
+    },
+    {
+      "timestamp": "2026-02-11T11:59:09.043611Z",
+      "is_test": true,
+      "total_sent": 1,
+      "total_failed": 0,
+      "results": [
+        {
+          "service_id": "test-email",
+          "email": "ionescuionut18@gmail.com",
+          "name": "Test Service Auto",
+          "status": "sent",
+          "timestamp": "2026-02-11T11:59:08.908989Z",
+          "error": null
+        }
+      ]
     }
   ]
 }
