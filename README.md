@@ -2,6 +2,20 @@
 
 Sistem automat de colectare și clasificare a service-urilor auto din România pentru promovarea serviciilor RCA de recuperare creanțe.
 
+---
+
+## 📚 Quick Navigation
+
+- **⚡ [QUICKSTART.md](QUICKSTART.md)** - Setup în 30 minute (pentru prima dată)
+- **🚀 [DEPLOYMENT.md](DEPLOYMENT.md)** - Ghid deployment pas-cu-pas complet
+- **📖 [USAGE_EXAMPLES.md](USAGE_EXAMPLES.md)** - Template-uri email, cold calling, Google Sheets
+- **💰 [COSTS_AND_LIMITS.md](COSTS_AND_LIMITS.md)** - Analiză costuri și strategii scaling
+- **✅ [PROJECT_STATUS.md](PROJECT_STATUS.md)** - Status proiect și checklist complet
+
+**→ Dacă ești la prima utilizare**: Începe cu [QUICKSTART.md](QUICKSTART.md)!
+
+---
+
 ## 📋 Descriere
 
 Această aplicație colectează **legal** date publice despre service-uri auto din România folosind:
