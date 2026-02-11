@@ -416,12 +416,35 @@
             </div>
         </div>
 
+        <!-- Email Actions -->
+        <div class="filters" id="emailActions" style="display: none; background: #f0f9ff; border: 2px solid #3b82f6;">
+            <div class="filter-row">
+                <strong style="color: #1e40af;">📧 Acțiuni Email:</strong>
+                <span id="selectedCount" style="color: #64748b;">0 selectate</span>
+                <button class="button" onclick="sendTestEmail()" style="background: #10b981;">
+                    🧪 Trimite Email de Test
+                </button>
+                <button class="button" onclick="sendEmailsToSelected()" style="background: #3b82f6;" id="sendEmailBtn" disabled>
+                    📨 Trimite Email la Selected
+                </button>
+                <button class="button button-secondary" onclick="clearSelection()">
+                    ✖ Deselectează Tot
+                </button>
+            </div>
+            <div style="font-size: 0.875rem; color: #64748b; margin-top: 10px;">
+                💡 <strong>Tip:</strong> Selectează service-urile dorite, apoi apasă "Trimite Email la Selected". Email-urile vor fi trimise în maxim 3 minute (20 email-uri per rulare).
+            </div>
+        </div>
+
         <div class="table-container">
             <div id="loading" class="loading">Încărcare date...</div>
             <div id="error" class="error" style="display: none;"></div>
             <table id="servicesTable" style="display: none;">
                 <thead>
                     <tr>
+                        <th>
+                            <input type="checkbox" id="selectAll" onchange="toggleSelectAll()" title="Selectează tot">
+                        </th>
                         <th class="sortable" data-sort="name">Nume</th>
                         <th class="sortable" data-sort="city">Oraș</th>
                         <th class="sortable" data-sort="size">Dimensiune</th>
@@ -451,6 +474,7 @@
         let currentPage = 1;
         let sortColumn = null;
         let sortDirection = 'asc';
+        let selectedServices = new Set(); // Track selected service IDs
 
         // Încărcare date
         async function loadData() {
@@ -593,6 +617,23 @@
             pageServices.forEach(service => {
                 const row = document.createElement('tr');
 
+                // Checkbox pentru selecție (doar dacă are email)
+                const checkCell = document.createElement('td');
+                if (service.email) {
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'service-checkbox';
+                    checkbox.dataset.serviceId = service.id;
+                    checkbox.dataset.email = service.email;
+                    checkbox.dataset.name = service.name;
+                    checkbox.checked = selectedServices.has(service.id);
+                    checkbox.onchange = () => toggleServiceSelection(service.id, service.email, service.name, checkbox.checked);
+                    checkCell.appendChild(checkbox);
+                } else {
+                    checkCell.textContent = '-';
+                    checkCell.style.color = '#ccc';
+                }
+
                 // Nume cu link Google Maps
                 const nameCell = document.createElement('td');
                 const nameLink = document.createElement('a');
@@ -671,6 +712,7 @@
                     websiteCell.textContent = '-';
                 }
 
+                row.appendChild(checkCell);
                 row.appendChild(nameCell);
                 row.appendChild(cityCell);
                 row.appendChild(sizeCell);
@@ -748,6 +790,193 @@
             link.download = `service-uri-auto-${new Date().toISOString().split('T')[0]}.csv`;
             link.click();
         }
+
+        // ========================================
+        // EMAIL FUNCTIONALITY
+        // ========================================
+
+        function toggleServiceSelection(serviceId, email, name, isChecked) {
+            if (isChecked) {
+                selectedServices.add(serviceId);
+            } else {
+                selectedServices.delete(serviceId);
+            }
+            updateSelectionUI();
+        }
+
+        function toggleSelectAll() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('.service-checkbox');
+
+            checkboxes.forEach(cb => {
+                cb.checked = selectAllCheckbox.checked;
+                const serviceId = cb.dataset.serviceId;
+                if (selectAllCheckbox.checked) {
+                    selectedServices.add(serviceId);
+                } else {
+                    selectedServices.delete(serviceId);
+                }
+            });
+
+            updateSelectionUI();
+        }
+
+        function clearSelection() {
+            selectedServices.clear();
+            document.getElementById('selectAll').checked = false;
+            document.querySelectorAll('.service-checkbox').forEach(cb => cb.checked = false);
+            updateSelectionUI();
+        }
+
+        function updateSelectionUI() {
+            const count = selectedServices.size;
+            document.getElementById('selectedCount').textContent = `${count} selectate`;
+            document.getElementById('sendEmailBtn').disabled = count === 0;
+
+            // Show/hide email actions panel
+            const emailActions = document.getElementById('emailActions');
+            if (count > 0) {
+                emailActions.style.display = 'block';
+            } else {
+                emailActions.style.display = 'none';
+            }
+        }
+
+        async function sendTestEmail() {
+            if (!confirm('Trimite email de test către ionescuionut18@gmail.com?')) {
+                return;
+            }
+
+            const queue = {
+                recipients: [{
+                    service_id: 'test-email',
+                    email: 'ionescuionut18@gmail.com',
+                    name: 'Test Service Auto'
+                }],
+                is_test: true,
+                created_at: new Date().toISOString()
+            };
+
+            try {
+                await commitEmailQueue(queue);
+                alert('✅ Email de test programat!\n\nVa fi trimis în 2-3 minute.\nVerifică inbox-ul la ionescuionut18@gmail.com');
+            } catch (error) {
+                alert('❌ Eroare: ' + error.message);
+            }
+        }
+
+        async function sendEmailsToSelected() {
+            const count = selectedServices.size;
+
+            if (count === 0) {
+                alert('Te rog selectează cel puțin un service din tabel.');
+                return;
+            }
+
+            const message = count > 20
+                ? `Vei trimite email-uri către ${count} service-uri.\n\n⚠️ ATENȚIE: Se vor trimite doar primele 20 email-uri în această rulare.\nCelelalte ${count - 20} vor fi trimise în următoarele rulări (20 per rulare).\n\nContinui?`
+                : `Vei trimite email-uri către ${count} service-uri.\n\nEmail-urile vor fi trimise în 2-3 minute.\n\nContinui?`;
+
+            if (!confirm(message)) {
+                return;
+            }
+
+            // Construiește lista de recipients
+            const recipients = [];
+            const checkboxes = document.querySelectorAll('.service-checkbox:checked');
+
+            checkboxes.forEach(cb => {
+                recipients.push({
+                    service_id: cb.dataset.serviceId,
+                    email: cb.dataset.email,
+                    name: cb.dataset.name
+                });
+            });
+
+            const queue = {
+                recipients: recipients,
+                is_test: false,
+                created_at: new Date().toISOString()
+            };
+
+            try {
+                await commitEmailQueue(queue);
+
+                const successMessage = count > 20
+                    ? `✅ Email-uri programate cu succes!\n\n📊 Total selectate: ${count}\n📨 Se trimit acum: 20 email-uri\n⏳ Rămân în queue: ${count - 20}\n\nEmail-urile vor fi trimise în 2-3 minute.\n\nVezi progresul în GitHub Actions:`
+                    : `✅ ${count} email-uri programate cu succes!\n\nVor fi trimise în 2-3 minute.\n\nVezi progresul în GitHub Actions:`;
+
+                alert(successMessage + '\nhttps://github.com/thesourr/auto-service-rca-bot/actions');
+
+                // Clear selection după trimitere
+                clearSelection();
+
+            } catch (error) {
+                alert('❌ Eroare la programarea email-urilor:\n\n' + error.message);
+            }
+        }
+
+        async function commitEmailQueue(queue) {
+            // Această funcție va salva queue-ul în data/email_queue.json
+            // și va face commit + push pe GitHub
+
+            const token = localStorage.getItem('github_token');
+            if (!token) {
+                throw new Error('GitHub token lipsește!\n\nTrebuie să configurezi un Personal Access Token în browser console:\nlocalStorage.setItem("github_token", "YOUR_TOKEN")');
+            }
+
+            const owner = 'thesourr';
+            const repo = 'auto-service-rca-bot';
+            const path = 'data/email_queue.json';
+            const branch = 'main';
+
+            // Get current file SHA (pentru update)
+            let sha = null;
+            try {
+                const getResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (getResponse.ok) {
+                    const data = await getResponse.json();
+                    sha = data.sha;
+                }
+            } catch (e) {
+                // File doesn't exist yet, that's OK
+            }
+
+            // Create/update file
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(queue, null, 2))));
+
+            const updateResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: `Add email queue - ${queue.recipients.length} recipients`,
+                    content: content,
+                    branch: branch,
+                    sha: sha
+                })
+            });
+
+            if (!updateResponse.ok) {
+                const error = await updateResponse.json();
+                throw new Error(error.message || 'Failed to commit email queue');
+            }
+
+            return await updateResponse.json();
+        }
+
+        // ========================================
+        // END EMAIL FUNCTIONALITY
+        // ========================================
 
         // Event listeners
         document.getElementById('cityFilter').addEventListener('change', applyFilters);
