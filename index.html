@@ -425,7 +425,7 @@
                     🧪 Trimite Email de Test
                 </button>
                 <button class="button" onclick="sendEmailsToSelected()" style="background: #3b82f6;" id="sendEmailBtn" disabled>
-                    📨 Trimite Email la Selected
+                    📥 Download Email List
                 </button>
                 <button class="button button-secondary" onclick="clearSelection()">
                     ✖ Deselectează Tot
@@ -873,9 +873,7 @@
                 return;
             }
 
-            const message = count > 20
-                ? `Vei trimite email-uri către ${count} service-uri.\n\n⚠️ ATENȚIE: Se vor trimite doar primele 20 email-uri în această rulare.\nCelelalte ${count - 20} vor fi trimise în următoarele rulări (20 per rulare).\n\nContinui?`
-                : `Vei trimite email-uri către ${count} service-uri.\n\nEmail-urile vor fi trimise în 2-3 minute.\n\nContinui?`;
+            const message = `Vei descărca lista cu ${count} service-uri.\n\nApoi rulează script-ul local pentru a trimite email-urile.\n\nContinui?`;
 
             if (!confirm(message)) {
                 return;
@@ -893,27 +891,37 @@
                 });
             });
 
-            const queue = {
+            const emailData = {
                 recipients: recipients,
-                is_test: false,
-                created_at: new Date().toISOString()
+                campaign_name: "Auto Service RCA Collaboration",
+                created_at: new Date().toISOString(),
+                total_count: recipients.length
             };
 
             try {
-                await commitEmailQueue(queue);
+                // Download JSON file
+                downloadEmailList(emailData);
 
-                const successMessage = count > 20
-                    ? `✅ Email-uri programate cu succes!\n\n📊 Total selectate: ${count}\n📨 Se trimit acum: 20 email-uri\n⏳ Rămân în queue: ${count - 20}\n\nEmail-urile vor fi trimise în 2-3 minute.\n\nVezi progresul în GitHub Actions:`
-                    : `✅ ${count} email-uri programate cu succes!\n\nVor fi trimise în 2-3 minute.\n\nVezi progresul în GitHub Actions:`;
+                alert(`✅ Lista de email-uri descărcată!\n\n📁 Fișier: email_recipients.json\n📊 Total: ${count} service-uri\n\n📝 Next steps:\n1. Deschide Terminal\n2. cd /Users/ionut/Desktop/App-scraping-service-auto\n3. python3 send_emails_local.py\n\n✉️  Email-urile vor fi trimise direct de pe computer!`);
 
-                alert(successMessage + '\nhttps://github.com/thesourr/auto-service-rca-bot/actions');
-
-                // Clear selection după trimitere
+                // Clear selection după download
                 clearSelection();
 
             } catch (error) {
-                alert('❌ Eroare la programarea email-urilor:\n\n' + error.message);
+                alert('❌ Eroare la descărcarea listei:\n\n' + error.message);
             }
+        }
+
+        function downloadEmailList(data) {
+            // Create JSON blob
+            const jsonStr = JSON.stringify(data, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+
+            // Create download link
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'email_recipients.json';
+            link.click();
         }
 
         async function commitEmailQueue(queue) {
