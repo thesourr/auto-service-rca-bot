@@ -455,9 +455,8 @@
         // Încărcare date
         async function loadData() {
             try {
-                // În producție, înlocuiește cu URL-ul tău GitHub
-                // Ex: https://raw.githubusercontent.com/USERNAME/REPO/main/data/services.xml
-                const response = await fetch('data/services.xml');
+                // URL către datele din GitHub
+                const response = await fetch('https://raw.githubusercontent.com/thesourr/auto-service-rca-bot/main/data/services.xml');
 
                 if (!response.ok) {
                     throw new Error('Nu s-au putut încărca datele');
