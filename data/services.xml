@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='utf-8'?>
+<services>
+  <service>
+    <id>ChIJt4DYJFgNSUcRwHOs1pViD6o</id>
+    <name>TAL Service Auto Cluj | Încărcare Freon Auto | Reglaj Direcție | Schimb Ulei, Distribuție | Tinichigerie, Vopsitorie Auto</name>
+    <size>large</size>
+    <email />
+    <phone />
+    <website>https://serviceautoclujnapoca.ro/</website>
+    <address>Bulevardul 21 Decembrie 1989 146, corp A, parter, 400604 Cluj-Napoca, România</address>
+    <city>400604 Cluj-Napoca</city>
+    <rating>4.9</rating>
+    <reviews>1672</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:29:48Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJGxCDjiMMSUcRHIOq2vzi7V4</id>
+    <name>Service Auto Cluj Oaza Car Care - Hotel Anvelope | Piese auto | Reglaj directie | Vulcanizare auto | Schimb ulei</name>
+    <size>large</size>
+    <email>contact@serviceautocluj.ro</email>
+    <phone>0774 456 341</phone>
+    <website>https://www.serviceautocluj.ro/</website>
+    <address>Calea Dorobanților 18-20, 400000 Cluj-Napoca, România</address>
+    <city>400000 Cluj-Napoca</city>
+    <rating>4.6</rating>
+    <reviews>342</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:29:51Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJd4JUUhgMSUcR3uoXn7C0kOQ</id>
+    <name>Modus - Service Auto Cluj - ITP CLuj</name>
+    <size>large</size>
+    <email />
+    <phone>0741 066 928</phone>
+    <website>http://www.modus.ro/</website>
+    <address>Bulevardul 21 Decembrie 1989 146, 400604 Cluj-Napoca, România</address>
+    <city>400604 Cluj-Napoca</city>
+    <rating>4.8</rating>
+    <reviews>414</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:29:53Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJkVxMWAQMSUcRLaelV5u04kA</id>
+    <name>Sturimex Service</name>
+    <size>large</size>
+    <email />
+    <phone>0740 166 499</phone>
+    <website />
+    <address>Str. Bulgarilor 10, 400627 Cluj-Napoca, România</address>
+    <city>400627 Cluj-Napoca</city>
+    <rating>4.7</rating>
+    <reviews>746</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:29:54Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ8bhK0sIOSUcROt1TA0Clo7Y</id>
+    <name>Black Auto</name>
+    <size>large</size>
+    <email>black.auto@yahoo.com</email>
+    <phone>0722 103 221</phone>
+    <website>https://blackautocluj.com/</website>
+    <address>Hala 4, Strada Lombului FN, 400227 Cluj-Napoca, România</address>
+    <city>400227 Cluj-Napoca</city>
+    <rating>4.6</rating>
+    <reviews>222</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:29:55Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJf2VUkHcMSUcRCMHw528vz6E</id>
+    <name>Auto Util Service</name>
+    <size>large</size>
+    <email>office@autoutil-service.ro</email>
+    <phone>0757 077 987</phone>
+    <website>https://www.autoutil-service.ro/</website>
+    <address>Strada Traian Vuia 25a, 400387 Cluj-Napoca, România</address>
+    <city>400387 Cluj-Napoca</city>
+    <rating>4.8</rating>
+    <reviews>251</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:29:57Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJsbu8Z-4PSUcRb42uIif0N3Q</id>
+    <name>Service Maier</name>
+    <size>medium</size>
+    <email />
+    <phone />
+    <website>https://servicemaier.com/</website>
+    <address>Strada Banul Udrea 6, 400238 Cluj-Napoca, România</address>
+    <city>400238 Cluj-Napoca</city>
+    <rating>4.9</rating>
+    <reviews>123</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:29:58Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJNenOe4AOSUcRK1eVRSEqQ34</id>
+    <name>Service Auto</name>
+    <size>medium</size>
+    <email />
+    <phone />
+    <website />
+    <address>400000, Strada Ciprian Porumbescu, 400535 Cluj-Napoca, România</address>
+    <city>400535 Cluj-Napoca</city>
+    <rating>4.5</rating>
+    <reviews>78</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:29:58Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJL_h99tgNSUcRCsggMcdbI5Q</id>
+    <name>Ocazii Auto Service</name>
+    <size>medium</size>
+    <email>office@ocaziiauto.ro</email>
+    <phone>0740 207 852</phone>
+    <website>https://ocaziiauto.ro/</website>
+    <address>Strada Frunzișului 83b, 400664 Cluj-Napoca, România</address>
+    <city>400664 Cluj-Napoca</city>
+    <rating>4.9</rating>
+    <reviews>140</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:01Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJMUdADgkMSUcR85ZuZQ0nrcY</id>
+    <name>Hal Auto</name>
+    <size>large</size>
+    <email>halauto.service@yahoo.com</email>
+    <phone>0264 456 261</phone>
+    <website>https://halautoservice.ro/</website>
+    <address>Strada Plevnei, 8, 400124 Cluj-Napoca, România</address>
+    <city>400124 Cluj-Napoca</city>
+    <rating>4.1</rating>
+    <reviews>269</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:04Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJr8Y5EQgMSUcRz6CCE1P3-g0</id>
+    <name>WOB Service</name>
+    <size>large</size>
+    <email />
+    <phone>0752 856 003</phone>
+    <website>https://www.wobservice.ro/</website>
+    <address>Strada Traian Vuia 182a, 400397 Cluj-Napoca, România</address>
+    <city>400397 Cluj-Napoca</city>
+    <rating>4.6</rating>
+    <reviews>257</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:06Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJPynYeX4NSUcRUbt0MgM1z50</id>
+    <name>Auto N&amp;G Service</name>
+    <size>small</size>
+    <email />
+    <phone>0745 634 264</phone>
+    <website />
+    <address>Strada Traian Vuia 25a, 400394 Cluj-Napoca, România</address>
+    <city>400394 Cluj-Napoca</city>
+    <rating>5</rating>
+    <reviews>25</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:07Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJozJTFeoOSUcRfi0LCSVEFTY</id>
+    <name>Niklas AD Garage - Service Auto Cluj</name>
+    <size>large</size>
+    <email />
+    <phone>0746 069 559</phone>
+    <website>https://niklas-service.ro/</website>
+    <address>Corneliu Coposu St 167, 400228 Cluj-Napoca, România</address>
+    <city>400228 Cluj-Napoca</city>
+    <rating>4.4</rating>
+    <reviews>213</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:08Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJj_ns77MNSUcR-oBCOA0HQrE</id>
+    <name>SOS ITP SERVICE</name>
+    <size>medium</size>
+    <email>dorobantilorservice@gmail.com</email>
+    <phone>0771 437 781</phone>
+    <website>https://serviceautocluj.com/</website>
+    <address>Calea Dorobanților 18-20, 400000 Cluj-Napoca, România</address>
+    <city>400000 Cluj-Napoca</city>
+    <rating>4.8</rating>
+    <reviews>194</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:09Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJU_phiLQNSUcRQ6LdcbNfOpE</id>
+    <name>Autocyb Tor- reglaj direcție 3D</name>
+    <size>medium</size>
+    <email />
+    <phone>0749 248 384</phone>
+    <website />
+    <address>Strada Mentenanței, 400397 Cluj-Napoca, România</address>
+    <city>400397 Cluj-Napoca</city>
+    <rating>4.9</rating>
+    <reviews>191</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:10Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ5wTXEAgMSUcR9oG58i7CB-Q</id>
+    <name>Auto Marcheno</name>
+    <size>medium</size>
+    <email />
+    <phone>0770 808 408</phone>
+    <website />
+    <address>Strada Bobâlnei 85, 400000 Cluj-Napoca, România</address>
+    <city>400000 Cluj-Napoca</city>
+    <rating>5</rating>
+    <reviews>125</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:10Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ16sU_EEMSUcR5TrTLysG9MI</id>
+    <name>Mall Dorobantilor Service</name>
+    <size>large</size>
+    <email>mallvulcan@yahoo.com</email>
+    <phone>0748 610 277</phone>
+    <website>http://mallvulcan.ro/</website>
+    <address>Calea Dorobanților 18-20, 400117 Cluj-Napoca, România</address>
+    <city>400117 Cluj-Napoca</city>
+    <rating>4.2</rating>
+    <reviews>1018</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:29Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJKzuhDn4MSUcRImcx1LWCyhc</id>
+    <name>Autodoc Service Auto</name>
+    <size>large</size>
+    <email>service@autodoc.ro</email>
+    <phone>0740 075 986</phone>
+    <website>https://auto-doc.ro/</website>
+    <address>Strada Plevnei 28, 400000 Cluj-Napoca, România</address>
+    <city>400000 Cluj-Napoca</city>
+    <rating>4.1</rating>
+    <reviews>839</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:29Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJEWYz2HcOSUcRYSHUN_PUK0I</id>
+    <name>Manu Auto</name>
+    <size>medium</size>
+    <email>office@auto-clinic.ro</email>
+    <phone>0364 117 770</phone>
+    <website>http://auto-clinic.ro/</website>
+    <address>Suite, Strada Frunzișului 83B, 400000 Cluj-Napoca, România</address>
+    <city>400000 Cluj-Napoca</city>
+    <rating>4.7</rating>
+    <reviews>97</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:31Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJmZq1Ec8NSUcR-0XAndwL17s</id>
+    <name>Autosel</name>
+    <size>medium</size>
+    <email />
+    <phone>0744 322 034</phone>
+    <website>https://www.autosel-service.ro/</website>
+    <address>Calea Turzii 170, 400495 Cluj-Napoca, România</address>
+    <city>400495 Cluj-Napoca</city>
+    <rating>4.5</rating>
+    <reviews>154</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-11T10:30:32Z</last_updated>
+  </service>
+</services>
