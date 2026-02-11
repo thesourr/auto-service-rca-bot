@@ -1,11 +1,5 @@
 {
-  "recipients": [
-    {
-      "service_id": "test-email",
-      "email": "ionescuionut18@gmail.com",
-      "name": "Test Service Auto"
-    }
-  ],
-  "is_test": true,
-  "created_at": "2026-02-11T12:12:45.867Z"
+  "recipients": [],
+  "is_test": false,
+  "last_processed": "2026-02-11T12:12:58.509969Z"
 }
