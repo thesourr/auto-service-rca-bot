@@ -201,6 +201,33 @@ def scrape_emails_from_website(website_url):
     return list(emails)
 
 
+def load_existing_services():
+    """
+    Încarcă service-urile existente din CSV pentru a evita duplicatele.
+
+    Returns:
+    -----    dict: Dicționar cu place_id-uri existente și recordurile lor
+    """
+    existing = {}
+    csv_path = os.path.join("data", "services.csv")
+
+    if not os.path.exists(csv_path):
+        return existing
+
+    try:
+        with open(csv_path, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                place_id = row.get("id")
+                if place_id:
+                    existing[place_id] = row
+        print(f"[INFO] Loaded {len(existing)} existing services from CSV")
+    except Exception as e:
+        print(f"[WARNING] Could not load existing CSV: {e}")
+
+    return existing
+
+
 def main():
     """
     Funcția principală care orchestrează întregul proces de scraping.
@@ -217,17 +244,24 @@ def main():
     # Creează directorul pentru date dacă nu există
     os.makedirs("data", exist_ok=True)
 
-    seen_places = {}
-    results = []
+    # Încarcă service-urile existente pentru deduplicare
+    existing_services = load_existing_services()
+    seen_places = existing_services.copy()  # Start cu cele existente
+    results = list(existing_services.values())  # Păstrează datele vechi
 
     # Procesează fiecare query
+    new_services_count = 0
     for idx, query in enumerate(SEARCH_QUERIES, 1):
         print(f"\n[{idx}/{len(SEARCH_QUERIES)}] Searching: {query}")
 
         place_count = 0
         for place in search_places(query):
             place_id = place.get("place_id")
-            if not place_id or place_id in seen_places:
+            if not place_id:
+                continue
+
+            # Skip dacă place_id există deja (deduplicare)
+            if place_id in seen_places:
                 continue
 
             # Obține detalii complete
@@ -271,9 +305,10 @@ def main():
                 "last_updated": now_str,
             }
 
-            seen_places[place_id] = True
+            seen_places[place_id] = record
             results.append(record)
             place_count += 1
+            new_services_count += 1
 
             # Rate limiting pentru a nu abuza API-ul
             time.sleep(0.3)
@@ -326,7 +361,8 @@ def main():
     print(f"\n{'='*60}")
     print(f"[SUCCESS] Scraping complete!")
     print(f"{'='*60}")
-    print(f"Total services found: {len(results)}")
+    print(f"Total services in database: {len(results)}")
+    print(f"NEW services added this run: {new_services_count}")
     print(f"Services with email: {email_count} ({email_count*100//len(results) if results else 0}%)")
     print(f"\nSize distribution:")
     for size, count in sorted(size_dist.items()):
