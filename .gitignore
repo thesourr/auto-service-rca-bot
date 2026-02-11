@@ -28,3 +28,6 @@ Thumbs.db
 
 # Project specific
 *.log
+
+# Claude Code settings (contains API keys)
+.claude/

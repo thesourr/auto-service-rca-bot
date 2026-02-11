@@ -195,7 +195,7 @@ Vezi **USAGE_EXAMPLES.md** pentru:
 ```bash
 cd /Users/ionut/Desktop/App-scraping-service-auto
 source venv/bin/activate
-export GOOGLE_MAPS_API_KEY="YOUR_GOOGLE_MAPS_API_KEY"
+export GOOGLE_MAPS_API_KEY="YOUR_API_KEY_HERE"
 python scrape_services.py
 ```
 
