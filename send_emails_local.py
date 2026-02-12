@@ -23,29 +23,30 @@ EMAIL_SUBJECT = "Propunere Colaborare - Recuperare Costuri Reparații Auto RCA"
 
 EMAIL_TEMPLATE_TEXT = """Bună ziua,
 
-Vă contactez în numele firmei noastre de consultanță juridică specializată în recuperarea costurilor de reparații auto pentru autovehiculele asigurate RCA.
+Sunt Ionuț Ionescu, consultant juridic specializat în recuperarea daunelor RCA.
 
-Înțelegem că service-ul dumneavoastră deservește zilnic clienți care au fost implicați în accidente auto cauzate de terți. În multe cazuri, acești clienți nu știu că au dreptul legal de a recupera integral costurile reparațiilor direct de la asigurătorul RCA al celui vinovat, fără a-și folosi propria asigurare CASCO.
+Vă scriu pentru a vă propune o colaborare care poate aduce beneficii atât service-ului dumneavoastră, cât și clienților acestuia.
 
-Propunem o colaborare prin care firma noastră se ocupă de:
-• Recuperarea integrală a costurilor reparațiilor de la asigurătorul RCA al vinovatului
-• Gestionarea completă a dosarului (fără efort din partea service-ului sau clientului)
-• Suport juridic complet pe toată durata procesului
-• Comision atractiv pentru service-ul dumneavoastră la fiecare caz soluționat
+Multe dintre persoanele implicate în accidente rutiere nu cunosc faptul că pot recupera integral costurile reparațiilor direct de la asigurătorul RCA al părții vinovate, fără a utiliza CASCO-ul propriu.
 
-Acest parteneriat vă oferă posibilitatea de a aduce un serviciu suplimentar clienților dumneavoastră, crescând satisfacția acestora și generând venituri adiționale pentru business-ul dumneavoastră.
+Serviciile noastre includ:
 
-Dacă sunteți interesat să discutăm detaliile acestei colaborări, vă rog să răspundeți la acest email sau să mă contactați telefonic.
+- Recuperarea costurilor reparațiilor de la asiguratorul RCA
+- Gestionarea completă a documentației și procedurilor legale
+- Consultanță juridică pe toată durata procesului
+- Comision pentru service la fiecare dosar soluționat cu succes
+
+Această colaborare permite service-ului dumneavoastră să ofere un serviciu complementar clienților, îmbunătățind experiența acestora și generând venituri suplimentare.
+
+Dacă această propunere v-ar putea interesa, vă rog să îmi răspundeți la acest email pentru a discuta detaliile.
 
 Cu stimă,
 Ionuț Ionescu
 Consultant Juridic
 Email: ionut@ionesculaw.ro
-Website: ionesculaw.ro
+Tel: [număr telefon]
 
----
-Acest email a fost trimis automat către service-urile auto din România.
-Dacă nu doriți să primiți astfel de mesaje, vă rugăm să răspundeți cu "UNSUBSCRIBE" în subiect.
+Dacă preferați să nu mai primiți mesaje de acest tip, vă rog să răspundeți cu "STOP" în subiect.
 """
 
 EMAIL_TEMPLATE_HTML = """
@@ -113,10 +114,10 @@ EMAIL_TEMPLATE_HTML = """
         <div class="benefits">
             <h3>Propunem o colaborare prin care firma noastră se ocupă de:</h3>
             <ul>
-                <li>✅ Recuperarea integrală a costurilor reparațiilor de la asigurătorul RCA al vinovatului</li>
-                <li>✅ Gestionarea completă a dosarului (fără efort din partea service-ului sau clientului)</li>
-                <li>✅ Suport juridic complet pe toată durata procesului</li>
-                <li>✅ Comision atractiv pentru service-ul dumneavoastră la fiecare caz soluționat</li>
+                <li>Recuperarea integrală a costurilor reparațiilor de la asigurătorul RCA al vinovatului</li>
+                <li>Gestionarea completă a dosarului (fără efort din partea service-ului sau clientului)</li>
+                <li>Suport juridic complet pe toată durata procesului</li>
+                <li>Comision atractiv pentru service-ul dumneavoastră la fiecare caz soluționat</li>
             </ul>
         </div>
 
@@ -134,8 +135,7 @@ EMAIL_TEMPLATE_HTML = """
     </div>
 
     <div class="footer">
-        <p>Acest email a fost trimis automat către service-urile auto din România.<br>
-        Dacă nu doriți să primiți astfel de mesaje, vă rugăm să răspundeți cu "UNSUBSCRIBE" în subiect.</p>
+        <p>Dacă preferați să nu mai primiți mesaje de acest tip, vă rog să răspundeți cu "STOP" în subiect.</p>
     </div>
 </body>
 </html>

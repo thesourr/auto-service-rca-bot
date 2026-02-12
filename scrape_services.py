@@ -99,10 +99,29 @@ def search_places(query):
             resp = requests.get(url, params=params, timeout=15)
             resp.raise_for_status()
             data = resp.json()
+            status = data.get("status")
+
+            # next_page_token poate fi invalid pentru câteva secunde după emitere.
+            if status == "INVALID_REQUEST" and "pagetoken" in params:
+                token_valid = False
+                for _ in range(4):
+                    time.sleep(2)
+                    retry_resp = requests.get(url, params=params, timeout=15)
+                    retry_resp.raise_for_status()
+                    retry_data = retry_resp.json()
+                    retry_status = retry_data.get("status")
+                    if retry_status == "OK":
+                        data = retry_data
+                        status = retry_status
+                        token_valid = True
+                        break
+                if not token_valid:
+                    print(f"[WARNING] API error for '{query}': {status} - {data.get('error_message', 'No message')}")
+                    break
 
             # Verifică dacă API-ul returnează erori
-            if data.get("status") not in ["OK", "ZERO_RESULTS"]:
-                print(f"[WARNING] API error for '{query}': {data.get('status')} - {data.get('error_message', 'No message')}")
+            if status not in ["OK", "ZERO_RESULTS"]:
+                print(f"[WARNING] API error for '{query}': {status} - {data.get('error_message', 'No message')}")
                 break
 
             for result in data.get("results", []):
@@ -228,6 +247,67 @@ def load_existing_services():
     return existing
 
 
+def normalize_phone(phone):
+    """
+    Normalizează numărul de telefon pentru deduplicare.
+    """
+    if not phone:
+        return ""
+    digits = re.sub(r"\D", "", phone)
+    return digits
+
+
+def normalize_website(website):
+    """
+    Normalizează website-ul pentru deduplicare (fără protocol, www, trailing slash).
+    """
+    if not website:
+        return ""
+    w = website.strip().lower()
+    w = re.sub(r"^https?://", "", w)
+    w = re.sub(r"^www\.", "", w)
+    w = w.rstrip("/")
+    return w
+
+
+def normalize_text(value):
+    """
+    Normalizează textul pentru deduplicare (lowercase, spații compacte).
+    """
+    if not value:
+        return ""
+    v = value.strip().lower()
+    v = re.sub(r"\s+", " ", v)
+    return v
+
+
+def build_dedupe_keys(record):
+    """
+    Construiește chei de deduplicare pentru un record.
+    """
+    keys = set()
+    name = normalize_text(record.get("name", ""))
+    address = normalize_text(record.get("address", ""))
+    city = normalize_text(record.get("city", ""))
+    phone = normalize_phone(record.get("phone", ""))
+    website = normalize_website(record.get("website", ""))
+
+    if name and address:
+        keys.add(f"name_addr:{name}|{address}")
+    if name and city:
+        keys.add(f"name_city:{name}|{city}")
+    if phone:
+        keys.add(f"phone:{phone}")
+    if website:
+        keys.add(f"website:{website}")
+    if name and phone:
+        keys.add(f"name_phone:{name}|{phone}")
+    if name and website:
+        keys.add(f"name_website:{name}|{website}")
+
+    return keys
+
+
 def main():
     """
     Funcția principală care orchestrează întregul proces de scraping.
@@ -248,6 +328,9 @@ def main():
     existing_services = load_existing_services()
     seen_places = existing_services.copy()  # Start cu cele existente
     results = list(existing_services.values())  # Păstrează datele vechi
+    seen_dedupe_keys = set()
+    for row in results:
+        seen_dedupe_keys.update(build_dedupe_keys(row))
 
     # Procesează fiecare query
     new_services_count = 0
@@ -305,7 +388,13 @@ def main():
                 "last_updated": now_str,
             }
 
+            # Deduplicare suplimentară pe chei (nume+adresă, telefon, website)
+            record_keys = build_dedupe_keys(record)
+            if record_keys and record_keys.intersection(seen_dedupe_keys):
+                continue
+
             seen_places[place_id] = record
+            seen_dedupe_keys.update(record_keys)
             results.append(record)
             place_count += 1
             new_services_count += 1

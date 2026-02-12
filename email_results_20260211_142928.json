@@ -1,0 +1,14 @@
+{
+  "campaign_date": "2026-02-11T14:29:28.283287",
+  "total_sent": 1,
+  "total_failed": 0,
+  "results": [
+    {
+      "email": "ionescuionut18@gmail.com",
+      "name": "TEST Local Email System",
+      "status": "sent",
+      "timestamp": "2026-02-11T14:29:28.246687",
+      "error": null
+    }
+  ]
+}

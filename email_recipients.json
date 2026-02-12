@@ -1,0 +1,12 @@
+{
+  "recipients": [
+    {
+      "service_id": "test-local-001",
+      "email": "ionescuionut18@gmail.com",
+      "name": "TEST Local Email System"
+    }
+  ],
+  "campaign_name": "Test Local Email - Verificare Funcționalitate",
+  "created_at": "2026-02-11T14:00:00Z",
+  "total_count": 1
+}
