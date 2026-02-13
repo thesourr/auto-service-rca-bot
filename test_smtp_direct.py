@@ -4,6 +4,7 @@ Test direct SMTP connection și trimitere email
 """
 
 import smtplib
+import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
@@ -11,11 +12,16 @@ from datetime import datetime
 # SMTP Configuration
 SMTP_HOST = "smtp.hostinger.com"
 SMTP_PORT = 465  # SSL
-SMTP_USER = "ionut@ionesculaw.ro"
-SMTP_PASSWORD = "YOUR_SMTP_PASSWORD"
+SMTP_USER = os.getenv("SMTP_USER", "ionut@ionesculaw.ro")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
 def test_smtp_connection():
     """Test SMTP connection"""
+    if not SMTP_PASSWORD:
+        print("❌ ERROR: SMTP_PASSWORD nu este setat.")
+        print('Rulează: export SMTP_PASSWORD="parola-ta-hostinger"')
+        return
+
     print("="*60)
     print("🔌 Testing SMTP Connection")
     print("="*60)

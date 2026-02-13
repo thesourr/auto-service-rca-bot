@@ -5,6 +5,7 @@ Test SMTP cu logging detaliat și verificare email
 
 import smtplib
 import logging
+import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
@@ -15,11 +16,16 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 # SMTP Configuration
 SMTP_HOST = "smtp.hostinger.com"
 SMTP_PORT = 465
-SMTP_USER = "ionut@ionesculaw.ro"
-SMTP_PASSWORD = "YOUR_SMTP_PASSWORD"
+SMTP_USER = os.getenv("SMTP_USER", "ionut@ionesculaw.ro")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
 def test_detailed_smtp():
     """Test SMTP with detailed logging"""
+    if not SMTP_PASSWORD:
+        print("❌ ERROR: SMTP_PASSWORD nu este setat.")
+        print('Rulează: export SMTP_PASSWORD="parola-ta-hostinger"')
+        return
+
     print("="*70)
     print("🔍 DETAILED SMTP TEST")
     print("="*70)

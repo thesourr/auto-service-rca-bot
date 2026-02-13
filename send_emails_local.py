@@ -15,8 +15,8 @@ from datetime import datetime
 # SMTP Configuration
 SMTP_HOST = "smtp.hostinger.com"
 SMTP_PORT = 465
-SMTP_USER = "ionut@ionesculaw.ro"
-SMTP_PASSWORD = "YOUR_SMTP_PASSWORD"
+SMTP_USER = os.getenv("SMTP_USER", "ionut@ionesculaw.ro")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
 # Email template
 EMAIL_SUBJECT = "Propunere Colaborare - Recuperare Costuri Reparații Auto RCA"
@@ -190,6 +190,11 @@ def send_email(smtp_conn, recipient_email, recipient_name, service_id):
 
 def main():
     """Main function"""
+    if not SMTP_PASSWORD:
+        print("❌ ERROR: SMTP_PASSWORD nu este setat în environment variables!")
+        print('Setează-l folosind: export SMTP_PASSWORD="parola-ta-hostinger"')
+        return
+
     print("="*70)
     print("📧 LOCAL EMAIL SENDER - Service Auto RCA")
     print("="*70)
