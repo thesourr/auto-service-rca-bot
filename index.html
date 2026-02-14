@@ -244,6 +244,11 @@
             color: #94a3b8;
         }
 
+        .badge-sent {
+            background: #dcfce7;
+            color: #166534;
+        }
+
         .rating {
             color: #fbbf24;
         }
@@ -326,6 +331,24 @@
             color: #dc2626;
         }
 
+        .sent-history-summary {
+            font-size: 0.875rem;
+            color: #334155;
+            margin-top: 10px;
+        }
+
+        .sent-preview-list {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #475569;
+            max-height: 120px;
+            overflow-y: auto;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px;
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 1.5rem;
@@ -379,6 +402,10 @@
                 <div class="stat-value" id="lastUpdated">-</div>
                 <div class="stat-label">Ultima Actualizare</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-value" id="sentCount">-</div>
+                <div class="stat-label">Contactate Deja</div>
+            </div>
         </div>
 
         <div class="filters">
@@ -410,8 +437,14 @@
                     <input type="checkbox" id="emailOnlyFilter">
                     Doar cu email
                 </label>
+                <label>
+                    <input type="checkbox" id="hideSentFilter">
+                    Ascunde deja contactate
+                </label>
 
                 <button class="button button-secondary" onclick="clearFilters()">Resetează Filtre</button>
+                <button class="button" onclick="rerunServiceSearch()" style="background: #0ea5e9;">🔎 Actualizează Căutarea</button>
+                <button class="button" onclick="refreshAllData()" style="background: #16a34a;">🔄 Refresh Date</button>
                 <button class="button" onclick="exportFilteredCSV()">📥 Export CSV</button>
             </div>
         </div>
@@ -432,8 +465,28 @@
                 </button>
             </div>
             <div style="font-size: 0.875rem; color: #64748b; margin-top: 10px;">
-                💡 <strong>Tip:</strong> Selectează service-urile dorite, apoi apasă "Trimite Email la Selected". Email-urile vor fi trimise în maxim 3 minute (20 email-uri per rulare).
+                💡 <strong>Tip:</strong> Selectează service-urile dorite, apoi apasă "Download Email List". Lista exclude automat service-urile marcate ca deja contactate.
             </div>
+        </div>
+
+        <div class="filters" id="sentHistoryPanel" style="background: #f8fafc; border: 1px solid #cbd5e1;">
+            <div class="filter-row">
+                <strong style="color: #0f172a;">📬 Istoric Email-uri Trimise</strong>
+                <button class="button" onclick="triggerHistoryImport()" style="background: #0ea5e9;">
+                    📤 Importă Istoric JSON
+                </button>
+                <button class="button button-secondary" onclick="exportSentHistory()">
+                    📥 Exportă Istoric
+                </button>
+                <button class="button button-secondary" onclick="clearSentHistory()">
+                    🗑️ Șterge Istoric
+                </button>
+                <input type="file" id="historyFileInput" accept=".json,application/json" style="display:none;" onchange="handleHistoryFile(event)">
+            </div>
+            <div class="sent-history-summary" id="sentHistorySummary">
+                Nu există istoric încărcat.
+            </div>
+            <div class="sent-preview-list" id="sentPreviewList" style="display: none;"></div>
         </div>
 
         <div class="table-container">
@@ -469,16 +522,258 @@
     <script>
         // Configurare
         const ITEMS_PER_PAGE = 50;
+        const SENT_HISTORY_STORAGE_KEY = 'sent_email_history_v1';
         let allServices = [];
         let filteredServices = [];
         let currentPage = 1;
         let sortColumn = null;
         let sortDirection = 'asc';
         let selectedServices = new Set(); // Track selected service IDs
+        let sentHistory = {
+            version: 1,
+            updated_at: null,
+            entries: []
+        };
+        let sentEmailSet = new Set();
+        let sentServiceIdSet = new Set();
+
+        function normalizeEmail(value) {
+            let email = (value || '').trim().toLowerCase();
+            email = email.replace(/^<|>$/g, '');
+            while (email && '.,;:'.includes(email[email.length - 1])) {
+                email = email.slice(0, -1);
+            }
+            return email;
+        }
+
+        function isLikelyEmail(value) {
+            const email = normalizeEmail(value);
+            const regex = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,}$/;
+            return regex.test(email) && !email.includes('..');
+        }
+
+        function rebuildSentIndexes() {
+            sentEmailSet = new Set();
+            sentServiceIdSet = new Set();
+
+            sentHistory.entries.forEach(entry => {
+                const email = normalizeEmail(entry.email || '');
+                const serviceId = (entry.service_id || '').trim();
+                if (email) sentEmailSet.add(email);
+                if (serviceId) sentServiceIdSet.add(serviceId);
+            });
+
+            document.getElementById('sentCount').textContent = sentHistory.entries.length;
+        }
+
+        function dedupeHistoryEntries(entries) {
+            const map = new Map();
+            entries.forEach(entry => {
+                const normalized = {
+                    service_id: (entry.service_id || '').trim(),
+                    email: normalizeEmail(entry.email || ''),
+                    name: (entry.name || '').trim(),
+                    sent_at: entry.sent_at || new Date().toISOString(),
+                    source_file: entry.source_file || ''
+                };
+                if (!normalized.service_id && !normalized.email) {
+                    return;
+                }
+                const key = normalized.service_id || normalized.email;
+                if (!map.has(key)) {
+                    map.set(key, normalized);
+                }
+            });
+            return Array.from(map.values());
+        }
+
+        function saveSentHistoryToStorage() {
+            sentHistory.updated_at = new Date().toISOString();
+            localStorage.setItem(SENT_HISTORY_STORAGE_KEY, JSON.stringify(sentHistory));
+        }
+
+        function loadSentHistoryFromStorage() {
+            const raw = localStorage.getItem(SENT_HISTORY_STORAGE_KEY);
+            if (!raw) {
+                rebuildSentIndexes();
+                updateSentHistoryUI();
+                return;
+            }
+
+            try {
+                const parsed = JSON.parse(raw);
+                const entries = Array.isArray(parsed?.entries) ? parsed.entries : [];
+                sentHistory = {
+                    version: 1,
+                    updated_at: parsed?.updated_at || null,
+                    entries: dedupeHistoryEntries(entries)
+                };
+            } catch (error) {
+                sentHistory = { version: 1, updated_at: null, entries: [] };
+            }
+
+            rebuildSentIndexes();
+            updateSentHistoryUI();
+        }
+
+        function isServiceAlreadyContacted(service) {
+            const email = normalizeEmail(service.email || '');
+            const serviceId = (service.id || '').trim();
+            if (serviceId && sentServiceIdSet.has(serviceId)) return true;
+            if (email && sentEmailSet.has(email)) return true;
+            return false;
+        }
+
+        function pruneSelectionForSent() {
+            const keep = new Set();
+            selectedServices.forEach(serviceId => {
+                const service = allServices.find(s => s.id === serviceId);
+                if (!service) return;
+                if (!isServiceAlreadyContacted(service)) {
+                    keep.add(serviceId);
+                }
+            });
+            selectedServices = keep;
+        }
+
+        function updateSentHistoryUI() {
+            const summary = document.getElementById('sentHistorySummary');
+            const preview = document.getElementById('sentPreviewList');
+            const total = sentHistory.entries.length;
+
+            if (total === 0) {
+                summary.textContent = 'Nu există istoric încărcat.';
+                preview.style.display = 'none';
+                preview.innerHTML = '';
+                return;
+            }
+
+            const updatedText = sentHistory.updated_at
+                ? new Date(sentHistory.updated_at).toLocaleString('ro-RO')
+                : '-';
+            summary.textContent = `Intrări istorice: ${total}. Ultima actualizare: ${updatedText}.`;
+
+            const previewEntries = sentHistory.entries.slice(-10).reverse();
+            preview.innerHTML = previewEntries
+                .map(entry => {
+                    const label = entry.name || entry.email || entry.service_id;
+                    const date = entry.sent_at ? new Date(entry.sent_at).toLocaleDateString('ro-RO') : '-';
+                    return `<div>• ${label} (${entry.email || 'fără email'}) - ${date}</div>`;
+                })
+                .join('');
+            preview.style.display = 'block';
+        }
+
+        function extractHistoryEntries(payload) {
+            if (Array.isArray(payload)) {
+                return payload;
+            }
+
+            if (Array.isArray(payload?.entries)) {
+                return payload.entries;
+            }
+
+            if (Array.isArray(payload?.recipients)) {
+                return payload.recipients.map(item => ({
+                    service_id: item.service_id || '',
+                    email: item.email || '',
+                    name: item.name || '',
+                    sent_at: payload?.created_at || new Date().toISOString(),
+                    source_file: 'imported-recipients'
+                }));
+            }
+
+            return [];
+        }
+
+        function triggerHistoryImport() {
+            document.getElementById('historyFileInput').click();
+        }
+
+        async function handleHistoryFile(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+
+            try {
+                const text = await file.text();
+                const payload = JSON.parse(text);
+                const extracted = extractHistoryEntries(payload);
+
+                const normalized = extracted
+                    .map(entry => ({
+                        service_id: (entry.service_id || '').toString().trim(),
+                        email: normalizeEmail((entry.email || '').toString()),
+                        name: (entry.name || '').toString().trim(),
+                        sent_at: entry.sent_at || new Date().toISOString(),
+                        source_file: entry.source_file || file.name
+                    }))
+                    .filter(entry => {
+                        if (!entry.service_id && !entry.email) return false;
+                        if (entry.email && !isLikelyEmail(entry.email)) return false;
+                        return true;
+                    });
+
+                sentHistory.entries = dedupeHistoryEntries([...sentHistory.entries, ...normalized]);
+                saveSentHistoryToStorage();
+                rebuildSentIndexes();
+                pruneSelectionForSent();
+                updateSentHistoryUI();
+                updateSelectionUI();
+                applyFilters();
+
+                alert(`Istoric importat: ${normalized.length} intrări valide.`);
+            } catch (error) {
+                alert(`Nu am putut importa istoricul: ${error.message}`);
+            } finally {
+                event.target.value = '';
+            }
+        }
+
+        function exportSentHistory() {
+            const blob = new Blob([JSON.stringify(sentHistory, null, 2)], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `sent_emails_history_${new Date().toISOString().slice(0, 10)}.json`;
+            link.click();
+        }
+
+        function clearSentHistory() {
+            if (!confirm('Ștergi istoricul local de email-uri trimise?')) {
+                return;
+            }
+            sentHistory = { version: 1, updated_at: null, entries: [] };
+            localStorage.removeItem(SENT_HISTORY_STORAGE_KEY);
+            rebuildSentIndexes();
+            pruneSelectionForSent();
+            updateSentHistoryUI();
+            updateSelectionUI();
+            applyFilters();
+        }
+
+        function setLoadingState(isLoading, message = 'Încărcare date...') {
+            const loading = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            const table = document.getElementById('servicesTable');
+            const pagination = document.getElementById('pagination');
+
+            if (isLoading) {
+                loading.textContent = message;
+                loading.style.display = 'block';
+                errorDiv.style.display = 'none';
+                table.style.display = 'none';
+                pagination.style.display = 'none';
+            } else {
+                loading.style.display = 'none';
+                table.style.display = 'table';
+                pagination.style.display = 'flex';
+            }
+        }
 
         // Încărcare date
         async function loadData() {
             try {
+                setLoadingState(true, 'Se actualizează lista service-urilor...');
+
                 // URL către datele din GitHub
                 const response = await fetch('https://raw.githubusercontent.com/thesourr/auto-service-rca-bot/main/data/services.xml');
 
@@ -510,14 +805,34 @@
                 populateCityFilter();
                 applyFilters();
 
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('servicesTable').style.display = 'table';
-                document.getElementById('pagination').style.display = 'flex';
+                setLoadingState(false);
+                return true;
             } catch (error) {
                 document.getElementById('loading').style.display = 'none';
                 const errorDiv = document.getElementById('error');
                 errorDiv.textContent = `Eroare: ${error.message}`;
                 errorDiv.style.display = 'block';
+                if (allServices.length > 0) {
+                    document.getElementById('servicesTable').style.display = 'table';
+                    document.getElementById('pagination').style.display = 'flex';
+                }
+                return false;
+            }
+        }
+
+        async function rerunServiceSearch() {
+            const ok = await loadData();
+            if (ok) {
+                alert('Lista de service-uri a fost actualizată din sursa curentă.');
+            }
+        }
+
+        async function refreshAllData() {
+            loadSentHistoryFromStorage();
+            const ok = await loadData();
+            updateSentHistoryUI();
+            if (ok) {
+                alert('Refresh complet finalizat: service-uri + istoric local reîncărcate.');
             }
         }
 
@@ -526,17 +841,23 @@
             const emailCount = allServices.filter(s => s.email).length;
             const largeCount = allServices.filter(s => s.size === 'large').length;
             const lastUpdate = allServices[0]?.last_updated || '';
+            const sentCount = allServices.filter(s => isServiceAlreadyContacted(s)).length;
+            const emailPct = allServices.length ? Math.round((emailCount * 100) / allServices.length) : 0;
 
             document.getElementById('totalCount').textContent = allServices.length;
-            document.getElementById('emailCount').textContent = `${emailCount} (${Math.round(emailCount * 100 / allServices.length)}%)`;
+            document.getElementById('emailCount').textContent = `${emailCount} (${emailPct}%)`;
             document.getElementById('largeCount').textContent = largeCount;
             document.getElementById('lastUpdated').textContent = lastUpdate ? new Date(lastUpdate).toLocaleDateString('ro-RO') : '-';
+            document.getElementById('sentCount').textContent = sentCount;
         }
 
         // Populează dropdown orașul
         function populateCityFilter() {
-            const cities = [...new Set(allServices.map(s => s.city))].filter(c => c).sort();
             const select = document.getElementById('cityFilter');
+            const previousValue = select.value;
+            select.innerHTML = '<option value="">Toate Orașele</option>';
+
+            const cities = [...new Set(allServices.map(s => s.city))].filter(c => c).sort();
 
             cities.forEach(city => {
                 const option = document.createElement('option');
@@ -544,24 +865,33 @@
                 option.textContent = city;
                 select.appendChild(option);
             });
+
+            if (previousValue && cities.includes(previousValue)) {
+                select.value = previousValue;
+            }
         }
 
         // Aplică filtre
         function applyFilters() {
+            pruneSelectionForSent();
             const cityFilter = document.getElementById('cityFilter').value;
             const searchFilter = document.getElementById('searchInput').value.toLowerCase();
             const emailOnly = document.getElementById('emailOnlyFilter').checked;
+            const hideSent = document.getElementById('hideSentFilter').checked;
             const sizeFilters = Array.from(document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked')).map(cb => cb.value);
 
             filteredServices = allServices.filter(s => {
                 if (cityFilter && s.city !== cityFilter) return false;
                 if (searchFilter && !s.name.toLowerCase().includes(searchFilter)) return false;
                 if (emailOnly && !s.email) return false;
+                if (hideSent && isServiceAlreadyContacted(s)) return false;
                 if (sizeFilters.length && !sizeFilters.includes(s.size)) return false;
                 return true;
             });
 
             currentPage = 1;
+            updateStats();
+            updateSelectionUI();
             renderTable();
         }
 
@@ -619,7 +949,8 @@
 
                 // Checkbox pentru selecție (doar dacă are email)
                 const checkCell = document.createElement('td');
-                if (service.email) {
+                const alreadySent = isServiceAlreadyContacted(service);
+                if (service.email && !alreadySent) {
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
                     checkbox.className = 'service-checkbox';
@@ -629,6 +960,11 @@
                     checkbox.checked = selectedServices.has(service.id);
                     checkbox.onchange = () => toggleServiceSelection(service.id, service.email, service.name, checkbox.checked);
                     checkCell.appendChild(checkbox);
+                } else if (service.email && alreadySent) {
+                    const sentBadge = document.createElement('span');
+                    sentBadge.className = 'badge badge-sent';
+                    sentBadge.textContent = 'trimis';
+                    checkCell.appendChild(sentBadge);
                 } else {
                     checkCell.textContent = '-';
                     checkCell.style.color = '#ccc';
@@ -684,6 +1020,12 @@
                     };
                     emailDiv.appendChild(emailLink);
                     emailDiv.appendChild(copyBtn);
+                    if (alreadySent) {
+                        const sentTag = document.createElement('span');
+                        sentTag.className = 'badge badge-sent';
+                        sentTag.textContent = 'deja contactat';
+                        emailDiv.appendChild(sentTag);
+                    }
                     emailCell.appendChild(emailDiv);
                 } else {
                     emailCell.textContent = '-';
@@ -760,6 +1102,7 @@
             document.getElementById('cityFilter').value = '';
             document.getElementById('searchInput').value = '';
             document.getElementById('emailOnlyFilter').checked = false;
+            document.getElementById('hideSentFilter').checked = false;
             document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => cb.checked = true);
             applyFilters();
         }
@@ -879,17 +1222,24 @@
                 return;
             }
 
-            // Construiește lista de recipients
+            // Construiește lista de recipients din selecția persistentă
             const recipients = [];
-            const checkboxes = document.querySelectorAll('.service-checkbox:checked');
-
-            checkboxes.forEach(cb => {
+            selectedServices.forEach(serviceId => {
+                const service = allServices.find(s => s.id === serviceId);
+                if (!service || !service.email) return;
+                if (isServiceAlreadyContacted(service)) return;
                 recipients.push({
-                    service_id: cb.dataset.serviceId,
-                    email: cb.dataset.email,
-                    name: cb.dataset.name
+                    service_id: service.id,
+                    email: normalizeEmail(service.email),
+                    name: service.name
                 });
             });
+
+            if (recipients.length === 0) {
+                alert('Nu mai există adrese eligibile (toate sunt deja contactate sau invalide).');
+                clearSelection();
+                return;
+            }
 
             const emailData = {
                 recipients: recipients,
@@ -902,7 +1252,7 @@
                 // Download JSON file
                 downloadEmailList(emailData);
 
-                alert(`✅ Lista de email-uri descărcată!\n\n📁 Fișier: email_recipients.json\n📊 Total: ${count} service-uri\n\n📝 Next steps:\n1. Deschide Terminal\n2. cd /Users/ionut/Desktop/App-scraping-service-auto\n3. python3 send_emails_local.py\n\n✉️  Email-urile vor fi trimise direct de pe computer!`);
+                alert(`✅ Lista de email-uri descărcată!\n\n📁 Fișier: email_recipients.json\n📊 Total: ${recipients.length} service-uri eligibile\n\n📝 Next steps:\n1. Deschide Terminal\n2. cd /Users/ionut/Desktop/App-scraping-service-auto\n3. python3 trimite_emailuri_apple_mail.py --input ~/Downloads/email_recipients.json\n4. După trimitere, importă data/sent_emails_history.json în secțiunea "Istoric Email-uri Trimise".`);
 
                 // Clear selection după download
                 clearSelection();
@@ -990,6 +1340,7 @@
         document.getElementById('cityFilter').addEventListener('change', applyFilters);
         document.getElementById('searchInput').addEventListener('input', debounce(applyFilters, 300));
         document.getElementById('emailOnlyFilter').addEventListener('change', applyFilters);
+        document.getElementById('hideSentFilter').addEventListener('change', applyFilters);
         document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => {
             cb.addEventListener('change', applyFilters);
         });
@@ -1011,7 +1362,8 @@
             };
         }
 
-        // Încarcă datele la load
+        // Încarcă istoricul local, apoi datele din GitHub
+        loadSentHistoryFromStorage();
         loadData();
     </script>
 </body>
