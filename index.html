@@ -443,9 +443,13 @@
                 </label>
 
                 <button class="button button-secondary" onclick="clearFilters()">Resetează Filtre</button>
+                <button class="button" id="runScrapeBtn" onclick="runScrapeWorkflow()" style="background: #7c3aed;">🛰️ Caută Service-uri Noi</button>
                 <button class="button" onclick="rerunServiceSearch()" style="background: #0ea5e9;">🔎 Actualizează Căutarea</button>
                 <button class="button" onclick="refreshAllData()" style="background: #16a34a;">🔄 Refresh Date</button>
                 <button class="button" onclick="exportFilteredCSV()">📥 Export CSV</button>
+            </div>
+            <div id="scrapeStatus" style="font-size: 0.875rem; color: #64748b; margin-top: 8px;">
+                Căutare service-uri: inactivă.
             </div>
         </div>
 
@@ -523,6 +527,10 @@
         // Configurare
         const ITEMS_PER_PAGE = 50;
         const SENT_HISTORY_STORAGE_KEY = 'sent_email_history_v1';
+        const GITHUB_OWNER = 'thesourr';
+        const GITHUB_REPO = 'auto-service-rca-bot';
+        const GITHUB_BRANCH = 'main';
+        const SCRAPE_WORKFLOW_FILE = 'scrape.yml';
         let allServices = [];
         let filteredServices = [];
         let currentPage = 1;
@@ -536,6 +544,7 @@
         };
         let sentEmailSet = new Set();
         let sentServiceIdSet = new Set();
+        let scrapeRunInProgress = false;
 
         function normalizeEmail(value) {
             let email = (value || '').trim().toLowerCase();
@@ -750,6 +759,152 @@
             applyFilters();
         }
 
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function getGithubTokenOrThrow() {
+            const token = localStorage.getItem('github_token');
+            if (!token) {
+                throw new Error(
+                    'GitHub token lipsește.\n\nSetează în browser console:\nlocalStorage.setItem("github_token", "YOUR_TOKEN")\n\nToken-ul trebuie să aibă acces la Actions (workflow dispatch).'
+                );
+            }
+            return token;
+        }
+
+        function setScrapeStatus(text, color = '#64748b') {
+            const statusEl = document.getElementById('scrapeStatus');
+            statusEl.textContent = text;
+            statusEl.style.color = color;
+        }
+
+        async function getLatestScrapeRun(token) {
+            const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${SCRAPE_WORKFLOW_FILE}/runs?branch=${GITHUB_BRANCH}&per_page=10`;
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github+json'
+                }
+            });
+            if (!response.ok) {
+                const error = await response.json().catch(() => ({}));
+                throw new Error(error.message || 'Nu am putut citi run-urile workflow-ului.');
+            }
+
+            const data = await response.json();
+            return (data.workflow_runs || [])[0] || null;
+        }
+
+        async function dispatchScrapeWorkflow(token) {
+            const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${SCRAPE_WORKFLOW_FILE}/dispatches`;
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ref: GITHUB_BRANCH })
+            });
+
+            if (!response.ok) {
+                const error = await response.json().catch(() => ({}));
+                throw new Error(error.message || 'Nu am putut porni workflow-ul de scraping.');
+            }
+        }
+
+        async function waitForNewScrapeRun(token, previousRunId) {
+            for (let i = 0; i < 30; i++) {
+                const latest = await getLatestScrapeRun(token);
+                if (latest && latest.id !== previousRunId) {
+                    return latest;
+                }
+                await sleep(3000);
+            }
+            throw new Error('Workflow-ul a fost pornit, dar nu am găsit run-ul nou în timp util.');
+        }
+
+        async function getRunById(token, runId) {
+            const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/runs/${runId}`;
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github+json'
+                }
+            });
+            if (!response.ok) {
+                const error = await response.json().catch(() => ({}));
+                throw new Error(error.message || 'Nu am putut citi statusul run-ului.');
+            }
+            return await response.json();
+        }
+
+        async function waitForRunCompletion(token, runId) {
+            for (let i = 0; i < 120; i++) {
+                const run = await getRunById(token, runId);
+                const status = run.status || 'unknown';
+                const conclusion = run.conclusion || '-';
+
+                if (status === 'completed') {
+                    return run;
+                }
+
+                setScrapeStatus(`Căutare service-uri în curs... (status: ${status}, conclusion: ${conclusion})`, '#0f766e');
+                await sleep(10000);
+            }
+            throw new Error('Workflow-ul rulează prea mult; verifică manual în tab-ul GitHub Actions.');
+        }
+
+        async function runScrapeWorkflow() {
+            if (scrapeRunInProgress) {
+                alert('Există deja o căutare în curs.');
+                return;
+            }
+
+            if (!confirm('Pornești acum căutarea de service-uri noi (Google Places) din GitHub Actions?')) {
+                return;
+            }
+
+            const button = document.getElementById('runScrapeBtn');
+            scrapeRunInProgress = true;
+            button.disabled = true;
+
+            try {
+                const token = getGithubTokenOrThrow();
+                setScrapeStatus('Pornesc workflow-ul de căutare service-uri...', '#7c3aed');
+
+                const previousRun = await getLatestScrapeRun(token);
+                const previousRunId = previousRun ? previousRun.id : null;
+
+                await dispatchScrapeWorkflow(token);
+                setScrapeStatus('Workflow pornit. Aștept alocarea run-ului...', '#7c3aed');
+
+                const newRun = await waitForNewScrapeRun(token, previousRunId);
+                setScrapeStatus(`Run detectat (#${newRun.run_number}). Monitorizare în curs...`, '#0f766e');
+
+                const completedRun = await waitForRunCompletion(token, newRun.id);
+                if (completedRun.conclusion !== 'success') {
+                    throw new Error(`Workflow terminat cu '${completedRun.conclusion}'. Verifică run-ul: ${completedRun.html_url}`);
+                }
+
+                setScrapeStatus('Workflow finalizat cu succes. Reîncarc tabelul...', '#166534');
+                const refreshed = await loadData();
+                if (!refreshed) {
+                    throw new Error('Scraping-ul a reușit, dar nu am reușit să reîncarc datele în tabel.');
+                }
+
+                setScrapeStatus(`Căutare finalizată cu succes. Ultimul run: #${completedRun.run_number}`, '#166534');
+                alert(`Căutare finalizată și tabel actualizat.\n\nRun: ${completedRun.html_url}`);
+            } catch (error) {
+                setScrapeStatus(`Eroare căutare service-uri: ${error.message}`, '#b91c1c');
+                alert(`Nu am putut finaliza căutarea: ${error.message}`);
+            } finally {
+                scrapeRunInProgress = false;
+                button.disabled = false;
+            }
+        }
+
         function setLoadingState(isLoading, message = 'Încărcare date...') {
             const loading = document.getElementById('loading');
             const errorDiv = document.getElementById('error');
@@ -774,8 +929,8 @@
             try {
                 setLoadingState(true, 'Se actualizează lista service-urilor...');
 
-                // URL către datele din GitHub
-                const response = await fetch('https://raw.githubusercontent.com/thesourr/auto-service-rca-bot/main/data/services.xml');
+                // URL către datele din GitHub (cache-busting pentru refresh imediat)
+                const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/data/services.xml?t=${Date.now()}`);
 
                 if (!response.ok) {
                     throw new Error('Nu s-au putut încărca datele');
@@ -1283,15 +1438,12 @@
                 throw new Error('GitHub token lipsește!\n\nTrebuie să configurezi un Personal Access Token în browser console:\nlocalStorage.setItem("github_token", "YOUR_TOKEN")');
             }
 
-            const owner = 'thesourr';
-            const repo = 'auto-service-rca-bot';
             const path = 'data/email_queue.json';
-            const branch = 'main';
 
             // Get current file SHA (pentru update)
             let sha = null;
             try {
-                const getResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+                const getResponse = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Accept': 'application/vnd.github.v3+json'
@@ -1309,7 +1461,7 @@
             // Create/update file
             const content = btoa(unescape(encodeURIComponent(JSON.stringify(queue, null, 2))));
 
-            const updateResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+            const updateResponse = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -1319,7 +1471,7 @@
                 body: JSON.stringify({
                     message: `Add email queue - ${queue.recipients.length} recipients`,
                     content: content,
-                    branch: branch,
+                    branch: GITHUB_BRANCH,
                     sha: sha
                 })
             });
