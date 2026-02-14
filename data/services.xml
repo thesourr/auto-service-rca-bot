@@ -5810,4 +5810,844 @@
     <source>google_places</source>
     <last_updated>2026-02-12T06:35:02Z</last_updated>
   </service>
+  <service>
+    <id>ChIJNW1ypzj_sUAR9HUVqdXuxxE</id>
+    <name>Hamio International Service Auto Rapid</name>
+    <size>medium</size>
+    <email />
+    <phone />
+    <website />
+    <address>Strada Antiaeriană 71, 051086 București, România</address>
+    <city>051086 București</city>
+    <rating>4.7</rating>
+    <reviews>120</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:45:32Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJoSkkiv7_sUARtuQ3s4Ay7OE</id>
+    <name>Pcp-Service Auto</name>
+    <size>small</size>
+    <email />
+    <phone>0722 454 344</phone>
+    <website />
+    <address>Strada Trompetului nr61, 052034 București, România</address>
+    <city>052034 București</city>
+    <rating>4.9</rating>
+    <reviews>16</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:45:32Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJLRTT7z4AskARS6oucpzQRA8</id>
+    <name>Nicmar Service Auto | Magazin piese auto | ITP | Geometrie | Incarcare Freon</name>
+    <size>large</size>
+    <email>nicmarprimacom@yahoo.com</email>
+    <phone>0785 977 291</phone>
+    <website>http://www.service-autoturisme.ro/</website>
+    <address>Prelungirea Ghencea 61, 052822 București, România</address>
+    <city>052822 București</city>
+    <rating>4.3</rating>
+    <reviews>445</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:45:36Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJRdvMj7L-sUARtYgRydLAjAY</id>
+    <name>Service Auto I.T.P</name>
+    <size>small</size>
+    <email>itprapids3@gmail.com</email>
+    <phone />
+    <website>http://www.itp-sector3.ro/</website>
+    <address>Bulevardul 1 Decembrie 1918, București, România</address>
+    <city>București</city>
+    <rating>5</rating>
+    <reviews>6</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:45:50Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJWcaG1Z_5sUAR4yb3lTWf8JY</id>
+    <name>Vulcanizare Auto Bucuresti - KOYOS SERVICES</name>
+    <size>small</size>
+    <email />
+    <phone>0729 349 965</phone>
+    <website />
+    <address>Strada Dâmbovicioarei 1, 014192 București, România</address>
+    <city>014192 București</city>
+    <rating>4.8</rating>
+    <reviews>47</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:45:51Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ--Br4Nv5sUAR-b-YuTQ6X5c</id>
+    <name>electrica auto Radu</name>
+    <size>small</size>
+    <email />
+    <phone>0722 889 762</phone>
+    <website />
+    <address>Str. Doamna Ghica 139, București, România</address>
+    <city>București</city>
+    <rating>4.8</rating>
+    <reviews>16</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:45:51Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ2001-sf4sUARNZoC_m7-nYs</id>
+    <name>Castrol Service Carmada Auto Service</name>
+    <size>medium</size>
+    <email>office@carmada.ro</email>
+    <phone />
+    <website>https://www.carmada.ro/</website>
+    <address>Strada Halmeu 2, 021118 București, România</address>
+    <city>021118 București</city>
+    <rating>4.4</rating>
+    <reviews>96</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:45:53Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ7yxkqgn8sUARXZ32jHy5o_I</id>
+    <name>GI EUROSERVICE</name>
+    <size>large</size>
+    <email>office@adsolutions.ro</email>
+    <phone>0724 371 367</phone>
+    <website>https://www.gieuroservice.ro/</website>
+    <address>Strada Negostina 111A, 032942 București, România</address>
+    <city>032942 București</city>
+    <rating>4.6</rating>
+    <reviews>562</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:07Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ110BCpn-sUARqP_3Wz1l5yU</id>
+    <name>Service auto multimarcă - Denis Serv</name>
+    <size>large</size>
+    <email>contact@deniserv.ro</email>
+    <phone>0749 930 588</phone>
+    <website>https://deniserv.ro/</website>
+    <address>Strada Ilioara 15, 077160 București, România</address>
+    <city>077160 București</city>
+    <rating>4.2</rating>
+    <reviews>202</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:12Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJT6b7sCX_sUARmnzH3M4tQ5Q</id>
+    <name>S&amp;M Service Auto Sector 3. Centru Daune Allianz Tiriac, Groupama, Grawe. Daune Sector 3</name>
+    <size>medium</size>
+    <email />
+    <phone>0731 344 158</phone>
+    <website>https://www.facebook.com/smautoservice126/</website>
+    <address>Strada Traian 126, 030576 București, România</address>
+    <city>030576 București</city>
+    <rating>3.9</rating>
+    <reviews>68</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:13Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ0Zw2T7apI0IR5_48MftNXk0</id>
+    <name>Service Electrician Mecanic Auto Diagnoza la Domiciliu.</name>
+    <size>medium</size>
+    <email />
+    <phone>0791 524 290</phone>
+    <website />
+    <address>Strada Răcari 27, 021304 București, România</address>
+    <city>021304 București</city>
+    <rating>4.3</rating>
+    <reviews>56</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:14Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJrVT828H-sUARjQSbaVB2sAc</id>
+    <name>Elite Auto Club</name>
+    <size>medium</size>
+    <email />
+    <phone>0722 630 680</phone>
+    <website />
+    <address>Int. Părului 4, București, România</address>
+    <city>București</city>
+    <rating>4.1</rating>
+    <reviews>95</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:14Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJVVUBEuv-sUARiu8jD3NZNVc</id>
+    <name>Silma Service</name>
+    <size>medium</size>
+    <email />
+    <phone>0722 388 955</phone>
+    <website />
+    <address>Strada Tomis 12, 031945 București, România</address>
+    <city>031945 București</city>
+    <rating>4.2</rating>
+    <reviews>73</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:14Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJYWy0LoX_sUAR0lNmi4UL5sU</id>
+    <name>Service auto SAVU M&amp;C SRL</name>
+    <size>small</size>
+    <email />
+    <phone>0723 395 808</phone>
+    <website />
+    <address>Strada Sintești 53, 032774 București, România</address>
+    <city>032774 București</city>
+    <rating>5</rating>
+    <reviews>6</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:15Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJOQett43-sUAR8QGPb4-607Q</id>
+    <name>Total Auto Electric</name>
+    <size>large</size>
+    <email />
+    <phone>0767 360 452</phone>
+    <website>https://www.total-auto-electric.ro/</website>
+    <address>Bulevardul Energeticienilor 84, 032092 București, România</address>
+    <city>032092 București</city>
+    <rating>4.6</rating>
+    <reviews>307</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:17Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJBaNFXAz-sUAROqlBJ9YH8aE</id>
+    <name>Doricom Service Car</name>
+    <size>medium</size>
+    <email />
+    <phone>0743 149 150</phone>
+    <website />
+    <address>042145, Strada Moșoaia 46, 042145 București, România</address>
+    <city>042145 București</city>
+    <rating>4.5</rating>
+    <reviews>87</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:28Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJGUvhpcYBskARvv2IrQI2z7g</id>
+    <name>Niță Service Auto &amp; Tuning</name>
+    <size>small</size>
+    <email />
+    <phone>0733 651 443</phone>
+    <website />
+    <address>Intrarea Binelui 1A, București, România</address>
+    <city>București</city>
+    <rating>5</rating>
+    <reviews>5</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:29Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ2_M6Hwv-sUAR2FM1J4T1suI</id>
+    <name>Auto Safe Test</name>
+    <size>medium</size>
+    <email>programari@itp-sector-4.ro</email>
+    <phone>0770 351 816</phone>
+    <website>http://itp-sector-4.ro/contact/</website>
+    <address>Strada Soldat Ion Enache 28, 042083 București, România</address>
+    <city>042083 București</city>
+    <rating>4.7</rating>
+    <reviews>194</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:32Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJBTyhoED-sUARfYz9odQ9CDE</id>
+    <name>Urgent ITP</name>
+    <size>large</size>
+    <email>itpmuncii@gmail.com</email>
+    <phone>0741 183 402</phone>
+    <website>https://itpservice.ro/</website>
+    <address>Strada Nițu Vasile nr. 55, 041546 București, România</address>
+    <city>041546 București</city>
+    <rating>4.8</rating>
+    <reviews>530</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:45Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ_9jV9eP_sUARXGaSVrxFHNk</id>
+    <name>Reparatii Electromotoare Auto</name>
+    <size>small</size>
+    <email />
+    <phone>0774 579 694</phone>
+    <website>http://www.reparatii-electromotoare.ro/</website>
+    <address>Bucuresti Magurele 47N, Bucuresti., 051433 București, România</address>
+    <city>051433 București</city>
+    <rating>4.5</rating>
+    <reviews>18</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:58Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJu6f_xqIBskARS5wFDImE5DM</id>
+    <name>Castrol Service Cristal Vest Auto</name>
+    <size>medium</size>
+    <email />
+    <phone>0745 607 070</phone>
+    <website />
+    <address>Str. Dâmbovița, 10 C, 060844 București, România</address>
+    <city>060844 București</city>
+    <rating>4.6</rating>
+    <reviews>172</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:46:59Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJT7nPxz0BskAR_wz1PwaG_t0</id>
+    <name>DIAGNOZA AUTO MERCEDES SECTOR 6</name>
+    <size>small</size>
+    <email>contact@diagnozachiptuning.ro</email>
+    <phone>0724 788 122</phone>
+    <website>https://diagnozachiptuning.ro/</website>
+    <address>Bulevardul Uverturii 126D, 077042 București, România</address>
+    <city>077042 București</city>
+    <rating>4.8</rating>
+    <reviews>18</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:03Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJj2nBthf3sUARCmUIocIvlhY</id>
+    <name>Autoest Service</name>
+    <size>medium</size>
+    <email />
+    <phone>021 351 0241</phone>
+    <website>http://www.auto-est.ro/</website>
+    <address>Șoseaua București - Urziceni 118, DN2, 077010 Afumați, România</address>
+    <city>077010 Afumați</city>
+    <rating>4.5</rating>
+    <reviews>113</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:16Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJbWwoOA_xsUARpA5QM6voosE</id>
+    <name>EL-MAG AUTO SRL</name>
+    <size>large</size>
+    <email />
+    <phone>0753 118 872</phone>
+    <website>https://catalog.polcar.com/el-mag</website>
+    <address>Jud. Ilfov, Sat Şindriliţa, Comuna Găneasa Drumul DN2 BUCUREŞTI-URZICENI, NR KM 19+341, HALA C1, 077100 Șindrilița, România</address>
+    <city>077100 Șindrilița</city>
+    <rating>5</rating>
+    <reviews>486</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:17Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJXcYPknAMSUcR4eUaAzDeBr4</id>
+    <name>Mas Service</name>
+    <size>medium</size>
+    <email>constatari@mas-service.ro</email>
+    <phone>0728 883 388</phone>
+    <website>http://www.mas-service.ro/</website>
+    <address>Calea Someșeni 6, 400388 Cluj-Napoca, România</address>
+    <city>400388 Cluj-Napoca</city>
+    <rating>4.4</rating>
+    <reviews>98</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:32Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJtSKcrJENSUcR2ZflHnAXvg4</id>
+    <name>Speed Auto Service</name>
+    <size>small</size>
+    <email />
+    <phone>0745 856 231</phone>
+    <website>https://www.facebook.com/123speedautoservice</website>
+    <address>Strada Câmpina 66, 400335 Cluj-Napoca, România</address>
+    <city>400335 Cluj-Napoca</city>
+    <rating>3.7</rating>
+    <reviews>24</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:33Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJE_zmWLcOSUcR3DMRxewDW-4</id>
+    <name>Service Auto cutii automate, mecanica, electrica CMPV CONCEPT</name>
+    <size>small</size>
+    <email>20cmpvconcept@gmail.com</email>
+    <phone>0730 921 317</phone>
+    <website>http://www.cmpvconcept.ro/</website>
+    <address>Strada Nicolae Teclu 39, 400394 Cluj-Napoca, România</address>
+    <city>400394 Cluj-Napoca</city>
+    <rating>4</rating>
+    <reviews>24</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:36Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJV7DliG0PSUcRtEc8GNztaSk</id>
+    <name>Vopsitorie auto &amp; Tinichigerie</name>
+    <size>medium</size>
+    <email />
+    <phone>0720 802 785</phone>
+    <website>https://vopsitorie-cluj.ro/</website>
+    <address>Strada Corneliu Coposu 41, 400235 Cluj-Napoca, România</address>
+    <city>400235 Cluj-Napoca</city>
+    <rating>4.8</rating>
+    <reviews>52</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:39Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ-UqWVKwOSUcRUAgP97UCeKE</id>
+    <name>Auto Pro Vulcan Srl</name>
+    <size>medium</size>
+    <email />
+    <phone>0740 196 478</phone>
+    <website />
+    <address>Strada Oașului 93, 400000 Cluj-Napoca, România</address>
+    <city>400000 Cluj-Napoca</city>
+    <rating>4.7</rating>
+    <reviews>133</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:39Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJA0HQQQgMSUcRPId0r_9x_kg</id>
+    <name>Altoni Com</name>
+    <size>large</size>
+    <email>altonicom@yahoo.com</email>
+    <phone>0264 482 258</phone>
+    <website>http://www.itpcluj.ro/</website>
+    <address>Strada Câmpina 51/53, 400394 Cluj-Napoca, România</address>
+    <city>400394 Cluj-Napoca</city>
+    <rating>4.6</rating>
+    <reviews>338</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:42Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ5ZWRU7hnRUcRgsNszapnxss</id>
+    <name>Auto LCD Vehicule s.r.l.</name>
+    <size>medium</size>
+    <email />
+    <phone>0724 519 425</phone>
+    <website />
+    <address>Strada Armoniei 30/32, 300254 Timișoara, România</address>
+    <city>300254 Timișoara</city>
+    <rating>4.4</rating>
+    <reviews>90</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:53Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ_UELNzdnRUcR27VZQApdDwY</id>
+    <name>Auto Precision - Service Auto Timisoara</name>
+    <size>small</size>
+    <email />
+    <phone>0727 522 766</phone>
+    <website />
+    <address>Strada Jean Paul Marat 16, 300092 Timișoara, România</address>
+    <city>300092 Timișoara</city>
+    <rating>4.4</rating>
+    <reviews>49</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:53Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJqc4Pn2hnRUcRY9lwFwbSdmc</id>
+    <name>MBM Auto Service Boghi</name>
+    <size>medium</size>
+    <email />
+    <phone>0724 846 824</phone>
+    <website>https://www.facebook.com/MBM-auto-service-Boghi-Srl-534594140043292/</website>
+    <address>Calea Sever Bocu, Timișoara, România</address>
+    <city>Timișoara</city>
+    <rating>4.4</rating>
+    <reviews>57</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:54Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJG-AQeItdRUcRDnTaOvazMSs</id>
+    <name>Auto Ioja</name>
+    <size>medium</size>
+    <email>office@autoioja.ro</email>
+    <phone>0723 041 152</phone>
+    <website>https://www.autoioja.ro/</website>
+    <address>Strada Bujorilor 175, 300013 Timișoara, România</address>
+    <city>300013 Timișoara</city>
+    <rating>4.3</rating>
+    <reviews>138</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:47:56Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJJRioOKRnRUcR6IGcse4DtHY</id>
+    <name>Autodaris Car Service Timisoara</name>
+    <size>medium</size>
+    <email />
+    <phone>0799 747 222</phone>
+    <website>http://www.autodaris.ro/</website>
+    <address>Strada Ion Ionescu de la Brad 3A, 300254 Timișoara, România</address>
+    <city>300254 Timișoara</city>
+    <rating>3.9</rating>
+    <reviews>134</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:01Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJPSU-Ri7xukAREs_FbM9du9Y</id>
+    <name>Constanța folie auto Llumar</name>
+    <size>small</size>
+    <email />
+    <phone>0721 289 892</phone>
+    <website />
+    <address>Bulevardul Tomis 358, 900001 Constanța, România</address>
+    <city>900001 Constanța</city>
+    <rating>5</rating>
+    <reviews>48</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:23Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJx4TN9hDwukARSttOLkSee5o</id>
+    <name>AR24 - Tractari Auto in Constanta</name>
+    <size>medium</size>
+    <email>office@ar-24.ro</email>
+    <phone>0760 651 165</phone>
+    <website>https://www.ar-24.ro/</website>
+    <address>Bulevardul Tomis nr.321, 900002 Constanța, România</address>
+    <city>900002 Constanța</city>
+    <rating>5</rating>
+    <reviews>101</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:25Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJa93HA6KbA64R4pOz8e5k5Lo</id>
+    <name>Diagnoza, deblocari auto si codari RXB</name>
+    <size>small</size>
+    <email />
+    <phone>0766 243 325</phone>
+    <website>https://rxb-auto.ro/</website>
+    <address>Strada Merișor 29, 900350 Constanța, România</address>
+    <city>900350 Constanța</city>
+    <rating>5</rating>
+    <reviews>26</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:26Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJE4MNX07XUkcRZTtXVaqk-Kw</id>
+    <name>Storad Service</name>
+    <size>small</size>
+    <email>storadservice@gmail.com</email>
+    <phone>0769 661 067</phone>
+    <website>https://www.storad.ro/</website>
+    <address>Aleea 1 Șimnic 11 c, 200100 Craiova, România</address>
+    <city>200100 Craiova</city>
+    <rating>4</rating>
+    <reviews>43</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:39Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJGzoJ2TjXUkcRZuyfIjytc50</id>
+    <name>Atelier Mecanic Auto</name>
+    <size>small</size>
+    <email />
+    <phone>0762 268 679</phone>
+    <website />
+    <address>Strada Vasile Alecsandri 60-62, Craiova, România</address>
+    <city>Craiova</city>
+    <rating>4.5</rating>
+    <reviews>14</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:39Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJCYs4CBHXUkcRpL0PCmJBtAU</id>
+    <name>Natmir Autoservice SRL Piese Auto Craiova</name>
+    <size>small</size>
+    <email />
+    <phone>0761 529 003</phone>
+    <website>https://www.facebook.com/mirelstanulica</website>
+    <address>Bulevardul Nicolae Romanescu 145, 200738 Craiova, România</address>
+    <city>200738 Craiova</city>
+    <rating>5</rating>
+    <reviews>34</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:40Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJl3C4dN_WUkcRu_FS155rINA</id>
+    <name>Vianor</name>
+    <size>large</size>
+    <email>contact@service-roti-craiova.ro</email>
+    <phone>0744 780 388</phone>
+    <website>http://www.service-roti-craiova.ro/</website>
+    <address>Strada Merișorului 83, 207280 Craiova, România</address>
+    <city>207280 Craiova</city>
+    <rating>4.6</rating>
+    <reviews>432</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:41Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJOSyCh6nXUkcRQi0noQpQ_oA</id>
+    <name>PAD DON AUTO S.R.L</name>
+    <size>small</size>
+    <email />
+    <phone>0729 124 045</phone>
+    <website />
+    <address>Strada Bariera Vâlcii 21, Craiova, România</address>
+    <city>Craiova</city>
+    <rating>4.6</rating>
+    <reviews>27</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:41Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJd7hbWdVds0ARiGB5KsjdR5Q</id>
+    <name>Service auto (ITP) - Das Werkstatt SRL</name>
+    <size>medium</size>
+    <email>open-dyslexic@1.0.0</email>
+    <phone>0743 372 587</phone>
+    <website>https://daswerkstatt.ro/</website>
+    <address>Calea Feldioarei 75c, 500199 Brașov, România</address>
+    <city>500199 Brașov</city>
+    <rating>4.6</rating>
+    <reviews>55</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:54Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJOdRT7Ilcs0ARPVmP0dXUGPo</id>
+    <name>Fast boys service.</name>
+    <size>large</size>
+    <email />
+    <phone>0742 984 629</phone>
+    <website>http://www.facebook.com/pages/Fast-boys-auto-service/307689089274527</website>
+    <address>Strada Nucului 28, 500305 Brașov, România</address>
+    <city>500305 Brașov</city>
+    <rating>4.4</rating>
+    <reviews>247</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:48:55Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ_1x85nvftkARB1x8p39R9qw</id>
+    <name>Meteor Auto</name>
+    <size>medium</size>
+    <email>lodash@4.17.21</email>
+    <phone>0757 031 172</phone>
+    <website>https://meteorauto2020.wixsite.com/mysite-1</website>
+    <address>Strada Avram Iancu, 800325 Galați, România</address>
+    <city>800325 Galați</city>
+    <rating>4.4</rating>
+    <reviews>96</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:08Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJQWV3IorftkAREMw7wdlMmuo</id>
+    <name>Cristal Service Auto Galati</name>
+    <size>small</size>
+    <email />
+    <phone>0769 641 136</phone>
+    <website />
+    <address>Bloc B, Strada 1 Decembrie 1918, 800551 Galați, România</address>
+    <city>800551 Galați</city>
+    <rating>3.5</rating>
+    <reviews>21</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:08Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJJaNXOvfetkARf5ypBDhqiX0</id>
+    <name>Sedegal Stil SRL</name>
+    <size>medium</size>
+    <email />
+    <phone>0758 304 459</phone>
+    <website />
+    <address>Țiglina 2, Galați, România</address>
+    <city>Galați</city>
+    <rating>4.6</rating>
+    <reviews>50</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:09Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJXc7scH3etkARoRzeN8yt8AI</id>
+    <name>Killtec</name>
+    <size>medium</size>
+    <email />
+    <phone>0236 470 028</phone>
+    <website>http://auto.killtec.ro/</website>
+    <address>Strada Tecuci 270, 800552 Galați, România</address>
+    <city>800552 Galați</city>
+    <rating>3.5</rating>
+    <reviews>186</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:14Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ32rOmdHftkARdWdxoSNKj54</id>
+    <name>Servicii Auto</name>
+    <size>small</size>
+    <email />
+    <phone>0748 682 020</phone>
+    <website />
+    <address>Drumul de Centură, 800552 Galați, România</address>
+    <city>800552 Galați</city>
+    <rating>4.9</rating>
+    <reviews>8</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:15Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJMyUJJWxJskARodu-HjWZGZQ</id>
+    <name>Premio Service Anvelope</name>
+    <size>large</size>
+    <email>marius_petrea@goodyear.com</email>
+    <phone>0748 112 236</phone>
+    <website>http://premio.ro/</website>
+    <address>Strada Gheorghe Grigore Cantacuzino 281, 107592 Ploiești, România</address>
+    <city>107592 Ploiești</city>
+    <rating>4.2</rating>
+    <reviews>316</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:28Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJP_uqXHNJskARZjBNI4aWb2Q</id>
+    <name>Autofix Torcători</name>
+    <size>medium</size>
+    <email />
+    <phone>0742 911 990</phone>
+    <website />
+    <address>Strada Torcători 15, 100275 Ploiești, România</address>
+    <city>100275 Ploiești</city>
+    <rating>4.2</rating>
+    <reviews>146</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:29Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJeYUs5htLskAR6FArMzU7acE</id>
+    <name>Folii auto autorizate ploiesti</name>
+    <size>large</size>
+    <email />
+    <phone>0728 216 665</phone>
+    <website />
+    <address>Strada Romană 95, 100140 Ploiești, România</address>
+    <city>100140 Ploiești</city>
+    <rating>4.9</rating>
+    <reviews>216</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:29Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJBazRXAVJskAR3fXHhPnu1Y4</id>
+    <name>Tractări auto</name>
+    <size>small</size>
+    <email />
+    <phone>0756 318 770</phone>
+    <website />
+    <address>Aleea Ciucului, Ploiești, România</address>
+    <city>Ploiești</city>
+    <rating>5</rating>
+    <reviews>1</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:29Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJW6MEAZ5JskARBp7Bt0GMIF0</id>
+    <name>AUTOGAS Garage Cantacuzino</name>
+    <size>medium</size>
+    <email />
+    <phone>0727 517 896</phone>
+    <website />
+    <address>Strada Gheorghe Grigore Cantacuzino 348, 100301 Ploiești, România</address>
+    <city>100301 Ploiești</city>
+    <rating>4.2</rating>
+    <reviews>79</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:30Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJX_gAarlLskARGTbg44MkI3g</id>
+    <name>Incarcare Freon Ploiesti + Reparatii A/C</name>
+    <size>small</size>
+    <email />
+    <phone>0722 533 587</phone>
+    <website />
+    <address>Strada Ștrandului 19, 100189 Ploiești, România</address>
+    <city>100189 Ploiești</city>
+    <rating>3.8</rating>
+    <reviews>33</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:30Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJh7X_jO5HRkcR04Tiagxn4HA</id>
+    <name>Service, Vulcanizare Auto</name>
+    <size>medium</size>
+    <email />
+    <phone>0774 653 909</phone>
+    <website />
+    <address>Str. Evreilor Deportați 23/a, Oradea, România</address>
+    <city>Oradea</city>
+    <rating>4.9</rating>
+    <reviews>51</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:41Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ_eq8T7A5RkcREKN16hiSJEQ</id>
+    <name>Service auto</name>
+    <size>small</size>
+    <email />
+    <phone />
+    <website />
+    <address>Str. Ogorului 105, Oradea, România</address>
+    <city>Oradea</city>
+    <rating>4.8</rating>
+    <reviews>6</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:42Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ7WUvwsdHRkcR3joPBKVJ_TQ</id>
+    <name>Clinica De Jante</name>
+    <size>medium</size>
+    <email>contact@jante-aliaj.com</email>
+    <phone>0729 242 526</phone>
+    <website>https://clinicadejante.ro/</website>
+    <address>Calea Clujului 284, 410553 Oradea, România</address>
+    <city>410553 Oradea</city>
+    <rating>4.4</rating>
+    <reviews>187</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:44Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ30M7WzRGRkcRzdxtZUxaoLc</id>
+    <name>Barnas Service Auto</name>
+    <size>small</size>
+    <email />
+    <phone />
+    <website />
+    <address>Str. Ovid Densușianu 72, Oradea, România</address>
+    <city>Oradea</city>
+    <rating>4.9</rating>
+    <reviews>15</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T07:49:45Z</last_updated>
+  </service>
 </services>
