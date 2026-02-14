@@ -7588,4 +7588,18 @@
     <source>google_places</source>
     <last_updated>2026-02-14T16:14:56Z</last_updated>
   </service>
+  <service>
+    <id>ChIJZV13K8NnRUcRhZLZsVJoo3Y</id>
+    <name>Autovest Garage</name>
+    <size>medium</size>
+    <email>service@autovestgarage.ro</email>
+    <phone>0756 370 104</phone>
+    <website>http://www.autovestgarage.ro/</website>
+    <address>Calea Torontalului, Timișoara, România</address>
+    <city>Timișoara</city>
+    <rating>4.6</rating>
+    <reviews>150</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-14T16:21:47Z</last_updated>
+  </service>
 </services>
