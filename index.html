@@ -479,6 +479,9 @@
                 <button class="button" onclick="triggerHistoryImport()" style="background: #0ea5e9;">
                     📤 Importă Istoric JSON
                 </button>
+                <button class="button button-secondary" onclick="manualSyncSentHistory()">
+                    ☁️ Sync din Repo
+                </button>
                 <button class="button button-secondary" onclick="exportSentHistory()">
                     📥 Exportă Istoric
                 </button>
@@ -596,6 +599,22 @@
             return Array.from(map.values());
         }
 
+        function normalizeHistoryEntries(entries, sourceLabel = '') {
+            return entries
+                .map(entry => ({
+                    service_id: (entry.service_id || '').toString().trim(),
+                    email: normalizeEmail((entry.email || '').toString()),
+                    name: (entry.name || '').toString().trim(),
+                    sent_at: entry.sent_at || new Date().toISOString(),
+                    source_file: entry.source_file || sourceLabel
+                }))
+                .filter(entry => {
+                    if (!entry.service_id && !entry.email) return false;
+                    if (entry.email && !isLikelyEmail(entry.email)) return false;
+                    return true;
+                });
+        }
+
         function saveSentHistoryToStorage() {
             sentHistory.updated_at = new Date().toISOString();
             localStorage.setItem(SENT_HISTORY_STORAGE_KEY, JSON.stringify(sentHistory));
@@ -623,6 +642,53 @@
 
             rebuildSentIndexes();
             updateSentHistoryUI();
+        }
+
+        async function syncSentHistoryFromRepo(showAlert = false) {
+            const historyUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/data/sent_emails_history.json?t=${Date.now()}`;
+
+            try {
+                const response = await fetch(historyUrl, { cache: 'no-store' });
+                if (!response.ok) {
+                    if (showAlert) {
+                        alert('Nu am găsit fișierul de istoric în repo.');
+                    }
+                    return false;
+                }
+
+                const payload = await response.json();
+                const extracted = extractHistoryEntries(payload);
+                const normalized = normalizeHistoryEntries(extracted, 'repo-history');
+                const beforeCount = sentHistory.entries.length;
+
+                sentHistory.entries = dedupeHistoryEntries([...sentHistory.entries, ...normalized]);
+                saveSentHistoryToStorage();
+                rebuildSentIndexes();
+                pruneSelectionForSent();
+                updateSentHistoryUI();
+
+                if (allServices.length > 0) {
+                    applyFilters();
+                } else {
+                    updateStats();
+                    updateSelectionUI();
+                }
+
+                if (showAlert) {
+                    const added = sentHistory.entries.length - beforeCount;
+                    alert(`Sincronizare finalizată. Intrări adăugate: ${added}. Total istoric: ${sentHistory.entries.length}.`);
+                }
+                return true;
+            } catch (error) {
+                if (showAlert) {
+                    alert(`Nu am putut sincroniza istoricul din repo: ${error.message}`);
+                }
+                return false;
+            }
+        }
+
+        async function manualSyncSentHistory() {
+            await syncSentHistoryFromRepo(true);
         }
 
         function isServiceAlreadyContacted(service) {
@@ -707,20 +773,7 @@
                 const text = await file.text();
                 const payload = JSON.parse(text);
                 const extracted = extractHistoryEntries(payload);
-
-                const normalized = extracted
-                    .map(entry => ({
-                        service_id: (entry.service_id || '').toString().trim(),
-                        email: normalizeEmail((entry.email || '').toString()),
-                        name: (entry.name || '').toString().trim(),
-                        sent_at: entry.sent_at || new Date().toISOString(),
-                        source_file: entry.source_file || file.name
-                    }))
-                    .filter(entry => {
-                        if (!entry.service_id && !entry.email) return false;
-                        if (entry.email && !isLikelyEmail(entry.email)) return false;
-                        return true;
-                    });
+                const normalized = normalizeHistoryEntries(extracted, file.name);
 
                 sentHistory.entries = dedupeHistoryEntries([...sentHistory.entries, ...normalized]);
                 saveSentHistoryToStorage();
@@ -984,6 +1037,7 @@
 
         async function refreshAllData() {
             loadSentHistoryFromStorage();
+            await syncSentHistoryFromRepo(false);
             const ok = await loadData();
             updateSentHistoryUI();
             if (ok) {
@@ -1514,9 +1568,14 @@
             };
         }
 
-        // Încarcă istoricul local, apoi datele din GitHub
-        loadSentHistoryFromStorage();
-        loadData();
+        // Încarcă istoricul local + din repo, apoi datele din GitHub
+        async function initializeDashboard() {
+            loadSentHistoryFromStorage();
+            await syncSentHistoryFromRepo(false);
+            await loadData();
+        }
+
+        initializeDashboard();
     </script>
 </body>
 </html>

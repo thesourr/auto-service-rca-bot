@@ -1,6 +1,1069 @@
 {
   "version": 1,
   "sender": "ionut@ionesculaw.ro",
-  "updated_at": null,
-  "entries": []
+  "updated_at": "2026-02-14T07:58:41Z",
+  "entries": [
+    {
+      "service_id": "test-1",
+      "email": "ionescuionut18@gmail.com",
+      "name": "Test Recipient",
+      "source_file": "--test",
+      "sent_at": "2026-02-14T07:52:17Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "test-2",
+      "email": "thesourgta@gmail.com",
+      "name": "Test Recipient",
+      "source_file": "--test",
+      "sent_at": "2026-02-14T07:52:19Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "test-3",
+      "email": "ionescuionut20@gmail.com",
+      "name": "Test Recipient",
+      "source_file": "--test",
+      "sent_at": "2026-02-14T07:52:21Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJs8OlHxr_sUARQK2ATCKsI3g",
+      "email": "info@nafimotors.ro",
+      "name": "Nafi Motors",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:37Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJm1cXC6T5sUAR8rto2Zdr0ag",
+      "email": "office@pitcar.ro",
+      "name": "PITCAR Automotive Holdings",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:39Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJs6OdfDb5sUAR7cE8Uz6NzJQ",
+      "email": "service@revizieopel.ro",
+      "name": "Bosch Car Service - Revizie Auto Online",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:40Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ6RKa12EBskARZ5HBiQ9QroY",
+      "email": "contact@kisservice.ro",
+      "name": "KisService - Service auto sector 6",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:42Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJJ29i1Wj8sUARZEDn7IJYzn0",
+      "email": "contact@servicedexcar.ro",
+      "name": "Service Auto București - DEXCAR - Vopsitorie Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:44Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJj4vdhOT_sUAR-OqhZRATazg",
+      "email": "contact@carserv-electronic.ro",
+      "name": "Carserv Electronic Bucuresti Service Diagnoza Auto Electrica, Electronica Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:45Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJJ3pRoeUCskARAbJ0KUX5NpU",
+      "email": "office@nordgarage.ro",
+      "name": "Nord Garage",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:47Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJC447heP4sUAR5PWlqcIuJ1k",
+      "email": "office@timas.ro",
+      "name": "Timas",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:49Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJFXi-Syj_sUAR8Vtxfh5Xl_A",
+      "email": "autointernationale@gmail.com",
+      "name": "Auto Service Internationale S.R.L.",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:51Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJeQLg7O4BskARkhKyrgEBPFw",
+      "email": "office@mecanero.ro",
+      "name": "Mecanero Ges Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:52Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJUR1DN6r_sUARtd9_HpwarDw",
+      "email": "estgaragebucuresti@gmail.com",
+      "name": "Est Garage - Service Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:54Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ-TToR635sUARZPXbnBPydg8",
+      "email": "alexandru.croitoru@premiumservice.ro",
+      "name": "PREMIUM SERVICE MOSILOR",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:56Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJl2jtgUb_sUARSN40wIjBGtM",
+      "email": "office@gsc-auto.ro",
+      "name": "General Services Company 97 SRL",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:58Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJxdqDGtr4sUARnn82aN_PfEA",
+      "email": "office@domauto.ro",
+      "name": "Dom Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:54:59Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJu1eCmE7_sUAR_wp3AgBw2Sk",
+      "email": "office@servicepremium.ro",
+      "name": "SERVICE PREMIUM",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:01Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJE1DAiZH-sUARuktw7EgT_KI",
+      "email": "20contact@simautogarage.ro",
+      "name": "Service Auto - Sim Auto Garage",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:03Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJbemG6Lz7sUARidNvmJqpY-8",
+      "email": "backdoorgarage1@gmail.com",
+      "name": "Backdoor Garage",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:05Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJv_tBGRP_sUARduyrGR2Esog",
+      "email": "fanautoline@yahoo.com",
+      "name": "Fan Auto Line",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:06Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJF_iqfu3-sUAR0-Xzduxwtiw",
+      "email": "office@serviceautomobile.ro",
+      "name": "Van International & Co",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:08Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJBe-D_NL9sUARbF54YdI5Q78",
+      "email": "daune@perfectlukservice.ro",
+      "name": "Perfect Luk Auto Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:11Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJrz0taxj8sUARQ5gpDnDGI9w",
+      "email": "office@autoklasen.ro",
+      "name": "Autoklasen Centru Daune",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:13Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ22YC-2f9sUAR3-l1FgxgLBo",
+      "email": "office@autoserviceior.ro",
+      "name": "Auto Service IOR srl",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:15Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJK5vwlwv-sUARYlYYwVAU_VA",
+      "email": "adexpert.autocom@gmail.com",
+      "name": "Adexpert ITP & Service Auto Berceni",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:17Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJse7jG2j-sUAROjMg_mMPwTQ",
+      "email": "contact@simauto.ro",
+      "name": "Sim Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:19Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJwT71_U_-sUARQc-chwG19Nw",
+      "email": "oltenitei@lunclasauto.ro",
+      "name": "LUNCLAS AUTO",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:25Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJvSYCUz_-sUARjGlpdsBUPtA",
+      "email": "service@rixe.ro",
+      "name": "Castrol Service Rixe Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:28Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJfVVm6sb_sUARADDxdFi8R34",
+      "email": "ioffice@automaxamg.ro",
+      "name": "Auto Max AMG Services",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:30Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJWe4rAXb-sUARsU94r15POLc",
+      "email": "office@carsinv.ro",
+      "name": "SC CARS INV SRL / CLAIM EXPERT",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:32Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJXeFDNNT_sUARMYddueD59C4",
+      "email": "office@contactautoservice.ro",
+      "name": "Contact Auto Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:34Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJCRsnzwv_sUAR4AodhywwtYM",
+      "email": "office@bitauto.ro",
+      "name": "Service Bit Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:35Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ9f0Mtp__sUARMhL3_Hfigiw",
+      "email": "contact@serviceautoitp.ro",
+      "name": "New Car International",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:37Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJq0fg46YBskARLJom8P3_vP0",
+      "email": "office@itp-auto.ro",
+      "name": "Shaken Auto | ITP Uverturii",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:39Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJK97k3uAAskARNmlD9iJrzQk",
+      "email": "office@perfectservicetca.ro",
+      "name": "Perfect Service TCA",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:41Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJY8aNwdABskARMPxbB-e0Ado",
+      "email": "office@itp-sector6.ro",
+      "name": "Shaken Auto | ITP Virtutii",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:43Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJpQquH84BskARqNFJJcen7Ao",
+      "email": "contact@turbineauto.ro",
+      "name": "Marvis Auto Concept",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:45Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJOeISP94DskARnCy9uad8S0k",
+      "email": "bluecarservice@yahoo.com",
+      "name": "Blue Car Service - Vopsitorie Auto | Tinichigerie Sector 6 | ITP Giulesti, Service Auto Giulesti",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:47Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJFTK69ykBskAREd5CzkCWAZo",
+      "email": "contact@autoserv.ro",
+      "name": "Autoserv | Bd. Timisoara",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:48Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJvSUIv0r4sUARl87lMKe6fgg",
+      "email": "contact@serviceautobmw.ro",
+      "name": "Sey Motors Service Auto BMW",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:51Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJGxmvN_4dskAR3yikaRRmnYY",
+      "email": "roecoservice@gmail.com",
+      "name": "Ecoservice Romania - Service auto Bucuresti",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:52Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ5TwX0yX3sUAROy9uqPPbpfI",
+      "email": "contact@auto-rom.ro",
+      "name": "MASTERS AUTOSERVICE S.R.L.",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:54Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJqxrAZA0dskARAw3YixyQ6LI",
+      "email": "contact@dmfservice.ro",
+      "name": "Service Auto Otopeni. DMF Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:56Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJOwnbJhIdskARNwdqkg8kfPs",
+      "email": "contact@servicetunari.ro",
+      "name": "Service auto Tunari",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:55:58Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJGxCDjiMMSUcRHIOq2vzi7V4",
+      "email": "oaza_car@yahoo.com",
+      "name": "Service Auto Cluj Oaza Car Care - Hotel Anvelope | Piese auto | Reglaj directie | Vulcanizare auto | Schimb ulei",
+      "source_file": "/Users/ionut/Downloads/email_recipients-2.json",
+      "sent_at": "2026-02-14T07:56:00Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJf2VUkHcMSUcRCMHw528vz6E",
+      "email": "office@autoutil-service.ro",
+      "name": "Auto Util Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:02Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ8bhK0sIOSUcROt1TA0Clo7Y",
+      "email": "black.auto@yahoo.com",
+      "name": "Black Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:04Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJL_h99tgNSUcRCsggMcdbI5Q",
+      "email": "office@ocaziiauto.ro",
+      "name": "Ocazii Auto Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:05Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ16sU_EEMSUcR5TrTLysG9MI",
+      "email": "mallvulcan@yahoo.com",
+      "name": "Mall Dorobantilor Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:07Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJj_ns77MNSUcR-oBCOA0HQrE",
+      "email": "dorobantilorservice@gmail.com",
+      "name": "SOS ITP SERVICE",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:09Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJKzuhDn4MSUcRImcx1LWCyhc",
+      "email": "service@autodoc.ro",
+      "name": "Autodoc Service Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:11Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJEWYz2HcOSUcRYSHUN_PUK0I",
+      "email": "office@auto-clinic.ro",
+      "name": "Manu Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:13Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJV8-BBslnRUcRsaAc2-8ncMc",
+      "email": "service@blackauto.ro",
+      "name": "Black Auto Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:15Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJw62TVgBdRUcR4f_T6fylsDU",
+      "email": "contact@service-tim.ro",
+      "name": "Service-Tim by SxN",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:17Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJzyJmWqdnRUcRFLQX8JRqGKw",
+      "email": "receptie@bestengine.ro",
+      "name": "Best Engine",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:18Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ15rcLI1nRUcRBsQZ8i02vYI",
+      "email": "office.amstm@gmail.com",
+      "name": "Auto-Mobil Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:20Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJAQBwxgVdRUcRfw2gkfhNqGs",
+      "email": "mecanica@autoxpert.ro",
+      "name": "AutoXpert",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:22Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJH7LdrfBnRUcRSkExNE24anM",
+      "email": "office@jarnes.ro",
+      "name": "Gusti Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:24Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJmweWhuf7ykARuHxQjmLKms8",
+      "email": "alina.gaita@listafirme.ro",
+      "name": "Service Auto Iasi",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:26Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJq_Dewzz7ykARqlwIfoIGFP0",
+      "email": "office@cosmomotors.ro",
+      "name": "Service auto Cosmo Motors",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:28Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJF5cYiFz7ykARV4BpbSsvTe4",
+      "email": "service_dn28@autocenteriasi.ro",
+      "name": "Bosch Car Service - Autocenter",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:30Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJx9dgEKT7ykAR0GTOGOPkHdU",
+      "email": "service@racemi.ro",
+      "name": "Racemi Car Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:32Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJuQFDFfr7ykARDEx2z6-DoeE",
+      "email": "office@serviceautoplus.ro",
+      "name": "Castrol Service NC Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:34Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJT14cZ-7vukARAi60gpbePhI",
+      "email": "birou@euroautoservice.ro",
+      "name": "Euro Auto Service si Statie ITP Constanta CT060",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:36Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJZ1W8oOTvukARq2diW28FTrs",
+      "email": "sandu_gerea@yahoo.fr",
+      "name": "Gerea",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:38Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ--lKr3v7ukARvWpBXkwL_hA",
+      "email": "ivone.auto.workshop@gmail.com",
+      "name": "Geometrie Roti constanta",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:39Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJReC5hunXUkcRV-u8qZMsM70",
+      "email": "office@nextlevelgarage.ro",
+      "name": "Next Level Garage",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:41Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJo5bR0p7ZUkcR7lvqRQh5XB4",
+      "email": "receptie@mmautoservice.ro",
+      "name": "MM Auto Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:43Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ3yt4JpFbs0ARlKs__QL5_MM",
+      "email": "contact@vrom.ro",
+      "name": "Service Auto Brasov | AutoVrom",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:45Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJC7TbldZbs0ARTce57qHVM7I",
+      "email": "mectepro.serv@gmail.com",
+      "name": "MECTEPRO service auto Brasov",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:47Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJD4-GgGdcs0AR86OhcNEjHb0",
+      "email": "master.werkstatt@gmail.com",
+      "name": "Master Werkstatt",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:49Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJjUyu1B1bs0AR6zAvE4aoGH0",
+      "email": "pfa.pintiliedumitruflorin@yahoo.com",
+      "name": "Service Auto - Pintilie Florin",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:51Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ3-Pn1Khbs0ARPrbEpYRXJ3o",
+      "email": "office@carfixpaint.ro",
+      "name": "Car Fix & Paint",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:53Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJEynKt5VZs0ARGMRYGCswl70",
+      "email": "info@suzukiromania.ro",
+      "name": "Arinovis Motors - Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:55Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJnZeeZcjetkARW_PEe-XRQUU",
+      "email": "office@iatsagalati.ro",
+      "name": "Dacia Iatsa Galati",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:57Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJFTB9PGbetkARl5S0R1NFBTs",
+      "email": "bogcarquality@yahoo.com",
+      "name": "BOGCAR QUALITY S.R.L.",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:56:58Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJif5GoMbetkARMlOCgEWOgoc",
+      "email": "posstavbussines@gmail.com",
+      "name": "AD Garage Nalba Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:00Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJeSO_ZojetkARbq75EOFYt14",
+      "email": "reparatii@serviceautogalati.ro",
+      "name": "Bonjour Service Auto | Galati",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:02Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJEYcSw5nftkARXtQDpurWkUE",
+      "email": "boatsgalsrl@yahoo.ro",
+      "name": "Autoalci - Service Auto, Revizie, Diagnoza Auto Galati. Service Clima, Incarcare Freon Auto, Reparatii Cutii de Viteze Galati",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:04Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ5fojfZ9LskARglOV6P7T-44",
+      "email": "office@automogul.ro",
+      "name": "AutoMogul",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:06Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJlWpWtXxJskARtTp2sSiil9I",
+      "email": "oferte@nicogel.ro",
+      "name": "Dacia Nicogel Serv Ploiești",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:08Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJY_GLBGtKskAR2YvpNLKJORA",
+      "email": "office@ploiesti.toyota.ro",
+      "name": "Arena Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:10Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ27H3UaZLskARjdNf9Ch-UdQ",
+      "email": "marian.dobrinescu@gmail.com",
+      "name": "SC Mardo Motor Serv SRL",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:12Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJicGaADc4RkcRhz1AGc3pKow",
+      "email": "office@casa-service.ro",
+      "name": "Service Casa",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:14Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ9Q_ll7RHRkcR1eH6cADzZGc",
+      "email": "office@pole.ro",
+      "name": "DORAVEN SERVICE - ITP - TAHOGRAFE",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:16Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJRTr2fzJGRkcRG2dB7Enafx8",
+      "email": "daune@prettycar.ro",
+      "name": "Centru Constatare Daune Exchange Car Omniasig Hellas Groupama Axeria Generali Asirom Allianz * PRETTY CAR Service Auto Oradea",
+      "source_file": "/Users/ionut/Downloads/email_recipients-3.json",
+      "sent_at": "2026-02-14T07:57:18Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ5Y15fzb5sUARzuYwCem2yPE",
+      "email": "office@dasautogarage.ro",
+      "name": "Das Auto Garage Morarilor Castrol Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:20Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJMWSZ-Nf4sUARG9ZttZYKt48",
+      "email": "contact@onebycafadaru.ro",
+      "name": "ONE BY CAFADARU AMANET AUTO",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:22Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJBfxXDZj4sUARqe5wCT5ifZ0",
+      "email": "office@incarcarefreon-auto.ro",
+      "name": "Incarcare Freon Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:24Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJh7TV7NP4sUARpPFlhyBHL6I",
+      "email": "kocsisrobert978@gmail.com",
+      "name": "ELCAR PROMT AUTO",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:26Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJxbLaeSj_sUARpMNO2smtGKw",
+      "email": "edy4x4@yahoo.ro",
+      "name": "EDI COM AUTO SERVICE 97",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:28Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJH1CaMiL5sUARQn-98HwjGFc",
+      "email": "office@volksgarage.ro",
+      "name": "Bosch Car Service - VOLKSGARAGE",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:30Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJQzQW3MH-sUART38J1NsSVJw",
+      "email": "contact@itpdristor.ro",
+      "name": "ITP Dristor",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:32Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJN_hugo_-sUARCOjeuS6GwtE",
+      "email": "office@autofirstclass.ro",
+      "name": "Service Auto First Class Professional",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:34Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ9xQn1xL_sUAR9d5KJlC3hEo",
+      "email": "office@autoasinternational.com",
+      "name": "Auto AS International",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:36Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJl9OFJ4j-sUAR1fmRTMrDCJc",
+      "email": "office@autok9.ro",
+      "name": "AutoK9 RMV SRL",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:38Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJP_XFKgT_sUARXGLId6TbMFE",
+      "email": "office@supertrafic.eu",
+      "name": "Super Trafic",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:40Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJa6oCvrn_sUARICJNMy-g8II",
+      "email": "office@bforce.ro",
+      "name": "bForce Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:42Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJrYk3wYb_sUAR8cHMJlubuSw",
+      "email": "office@vulcanizare-sava.ro",
+      "name": "Vulcanizare Auto Sava",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:44Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJy9FYq8UcskARGo5ZyY-uKcE",
+      "email": "office@mevas-auto.ro",
+      "name": "Bosch Car Service - Mevas Auto Center",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:47Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ4Uk2QEoBskARIVX8SYG3S7A",
+      "email": "traiancapitanescu@yahoo.com",
+      "name": "ITP Chiajna",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:49Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJHderwpBnRUcRRBfnlBJa6Vw",
+      "email": "office@autoovarom.ro",
+      "name": "Castrol Service Auto Ovarom",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:51Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJy9al9zRfRUcRYcFS_7wFxjY",
+      "email": "service@nidacauto.ro",
+      "name": "Nidac Auto Service",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:53Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ2yA5RgtdRUcR3gy1XhBIKNU",
+      "email": "alinpremiumservicetm@gmail.com",
+      "name": "Alin Premium Service TM",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:55Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJZYjjVqflukARlhvqqryjRBc",
+      "email": "office@auto-technik.ro",
+      "name": "Auto Technik Meister SRL",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:57:58Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJVURRkvTvukARaE099U7mF3c",
+      "email": "contact@itpconstanta.ro",
+      "name": "Statie ITP Auto Check Srl",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:00Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJc04uiWdcs0AR2fFreEr33x4",
+      "email": "office@glasstuning.ro",
+      "name": "Glass Tuning",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:02Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJ-3Ombo1cs0ARkgnCfP2A6jo",
+      "email": "office@marcosauto.ro",
+      "name": "Marcos Auto",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:04Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJe6OtbRLetkARxBIsIicvRtc",
+      "email": "office@enagrup.ro",
+      "name": "Ena Traian - ITP - Service Galati",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:06Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJT2U7XF3ftkARUx-eOi7qXT4",
+      "email": "tridentautoplus@yahoo.com",
+      "name": "TRIDENT AUTOPLUS SERVICE AUTO",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:19Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJNe1BmAJKskARJu7XdL9y5jw",
+      "email": "office@imaxim.ro",
+      "name": "IMAXIM SRL",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:24Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJM2Gg_KRNskARnvOBlyLF7UY",
+      "email": "contact@firstpneuautoparts.ro",
+      "name": "FIRSTPNEU",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:27Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJnYshycZHRkcR715QkBrtT8k",
+      "email": "carservice@mail.com",
+      "name": "Barosan ITP",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:31Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJpQTa3rEBskARkoJZ3GS928I",
+      "email": "servicemilitari@aviamotors.ro",
+      "name": "Avia Motors Militari",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:33Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJx4ADXM77ykARdeiIUq8wz-Q",
+      "email": "contact@serviceautobear.ro",
+      "name": "Service Auto Bear",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:36Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJCblAi_LvukARi1SfN1oUNa4",
+      "email": "service@carfixmotors.ro",
+      "name": "Castrol Service Carfix Motors",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:38Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    },
+    {
+      "service_id": "ChIJIZeWEQVbs0ARmpdSo712I-s",
+      "email": "vanzari@iceteam.ro",
+      "name": "Ice Team - DEKRA",
+      "source_file": "/Users/ionut/Downloads/email_recipients-4.json",
+      "sent_at": "2026-02-14T07:58:41Z",
+      "subject": "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law",
+      "sender": "ionut@ionesculaw.ro"
+    }
+  ]
 }
