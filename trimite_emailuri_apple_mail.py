@@ -21,12 +21,11 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Set, Tuple
 
 SENDER = "ionut@ionesculaw.ro"
-SUBJECT = "Propunere colaborare profesională"
+SUBJECT = "Propunere colaborare - Obtinere despagubiri RCA - Ionescu Law"
 DEFAULT_HISTORY_PATH = Path("data/sent_emails_history.json")
 DEFAULT_RESULTS_DIR = Path("data")
 
 EMAIL_BODY = """Stimată Doamnă / Stimate Domnule,
-
 
 Numele meu este Ionescu Virgiliu-Ionuț și sunt avocat în Baroul București, cu experiență în recuperarea sumelor de bani datorate de societățile de asigurare în dosarele de daună RCA.
 
@@ -35,14 +34,10 @@ Vă contactez pentru a vă propune o colaborare profesională prin care să spri
 
 În cadrul colaborării, pot asigura:
 
-analizarea dosarelor de daună și a documentației aferente;
-
-formularea notificărilor și a demersurilor prealabile;
-
-reprezentare în fața instanțelor de judecată;
-
-recuperarea penalităților și a dobânzilor legale, acolo unde este cazul.
-
+- analizarea dosarelor de daună și a documentației aferente;
+- formularea notificărilor și a demersurilor prealabile;
+- reprezentare în fața instanțelor de judecată;
+- recuperarea penalităților și a dobânzilor legale, acolo unde este cazul.
 
 Obiectivul este protejarea intereselor service-ului și maximizarea recuperării sumelor cuvenite, fără a afecta relația cu clienții dumneavoastră.
 
@@ -54,7 +49,7 @@ Vă mulțumesc pentru timpul acordat și aștept cu interes un răspuns din part
 Cu aleasă considerație,
 Virgiliu-Ionuț IONESCU
 Managing Partner
-ionesculaw.ro"""
+ionesculaw.ro / 0750 400 412"""
 
 TEST_RECIPIENTS = [
     "ionescuionut18@gmail.com",

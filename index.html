@@ -461,6 +461,9 @@
                 <button class="button" onclick="sendTestEmail()" style="background: #10b981;">
                     🧪 Trimite Email de Test
                 </button>
+                <button class="button" onclick="sendEmailsDirectLocal()" style="background: #f59e0b;" id="sendDirectBtn" disabled>
+                    ✉️ Trimite Direct (Local)
+                </button>
                 <button class="button" onclick="sendEmailsToSelected()" style="background: #3b82f6;" id="sendEmailBtn" disabled>
                     📥 Download Email List
                 </button>
@@ -469,7 +472,10 @@
                 </button>
             </div>
             <div style="font-size: 0.875rem; color: #64748b; margin-top: 10px;">
-                💡 <strong>Tip:</strong> Selectează service-urile dorite, apoi apasă "Download Email List". Lista exclude automat service-urile marcate ca deja contactate.
+                💡 <strong>Tip:</strong> Pentru trimitere directă, pornește local bridge-ul cu: <code>python3 local_mail_bridge.py</code>. Lista exclude automat service-urile marcate ca deja contactate.
+            </div>
+            <div id="localSendStatus" style="font-size: 0.875rem; color: #64748b; margin-top: 8px;">
+                Trimitere locală: inactivă.
             </div>
         </div>
 
@@ -534,6 +540,7 @@
         const GITHUB_REPO = 'auto-service-rca-bot';
         const GITHUB_BRANCH = 'main';
         const SCRAPE_WORKFLOW_FILE = 'scrape.yml';
+        const LOCAL_MAIL_BRIDGE_URL = 'http://127.0.0.1:8765';
         let allServices = [];
         let filteredServices = [];
         let currentPage = 1;
@@ -1347,6 +1354,172 @@
         // EMAIL FUNCTIONALITY
         // ========================================
 
+        function setLocalSendStatus(text, color = '#64748b') {
+            const statusEl = document.getElementById('localSendStatus');
+            if (!statusEl) return;
+            statusEl.textContent = text;
+            statusEl.style.color = color;
+        }
+
+        function buildEligibleRecipientsFromSelection() {
+            const recipients = [];
+            selectedServices.forEach(serviceId => {
+                const service = allServices.find(s => s.id === serviceId);
+                if (!service || !service.email) return;
+                if (isServiceAlreadyContacted(service)) return;
+                recipients.push({
+                    service_id: service.id,
+                    email: normalizeEmail(service.email),
+                    name: service.name
+                });
+            });
+            return recipients;
+        }
+
+        async function pushSentHistoryToRepo() {
+            const token = localStorage.getItem('github_token');
+            if (!token) {
+                return { ok: false, skipped: true, reason: 'missing_token' };
+            }
+
+            const path = 'data/sent_emails_history.json';
+            let sha = null;
+
+            try {
+                const getResponse = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (getResponse.ok) {
+                    const data = await getResponse.json();
+                    sha = data.sha;
+                }
+            } catch (error) {
+                // ignore: create file on PUT
+            }
+
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(sentHistory, null, 2))));
+            const payload = {
+                message: `Update sent email history (${new Date().toISOString()})`,
+                content,
+                branch: GITHUB_BRANCH,
+                sha
+            };
+
+            const updateResponse = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!updateResponse.ok) {
+                const err = await updateResponse.json().catch(() => ({}));
+                return { ok: false, skipped: false, reason: err.message || 'push_failed' };
+            }
+
+            return { ok: true, skipped: false };
+        }
+
+        async function sendEmailsDirectLocal() {
+            const count = selectedServices.size;
+            if (count === 0) {
+                alert('Te rog selectează cel puțin un service din tabel.');
+                return;
+            }
+
+            const recipients = buildEligibleRecipientsFromSelection();
+            if (recipients.length === 0) {
+                alert('Nu mai există adrese eligibile (toate sunt deja contactate sau invalide).');
+                clearSelection();
+                return;
+            }
+
+            const confirmMessage = `Vei trimite DIRECT din Apple Mail către ${recipients.length} service-uri eligibile.\n\nContinuăm?`;
+            if (!confirm(confirmMessage)) {
+                return;
+            }
+
+            const sendBtn = document.getElementById('sendDirectBtn');
+            sendBtn.disabled = true;
+            setLocalSendStatus('Verific local bridge...', '#0ea5e9');
+
+            try {
+                const healthResponse = await fetch(`${LOCAL_MAIL_BRIDGE_URL}/health`);
+                if (!healthResponse.ok) {
+                    throw new Error('Local bridge indisponibil.');
+                }
+
+                const payload = {
+                    recipients,
+                    delay: 1.0,
+                    dry_run: false,
+                    force_resend: false
+                };
+
+                setLocalSendStatus('Se trimit email-urile prin Apple Mail...', '#0f766e');
+                const sendResponse = await fetch(`${LOCAL_MAIL_BRIDGE_URL}/send-selected`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const sendData = await sendResponse.json().catch(() => ({}));
+                if (!sendResponse.ok) {
+                    throw new Error(sendData.error || `HTTP ${sendResponse.status}`);
+                }
+
+                const sentEntries = Array.isArray(sendData.sent_entries) ? sendData.sent_entries : [];
+                if (sentEntries.length > 0) {
+                    const normalized = normalizeHistoryEntries(sentEntries, 'local-mail-bridge');
+                    sentHistory.entries = dedupeHistoryEntries([...sentHistory.entries, ...normalized]);
+                    saveSentHistoryToStorage();
+                    rebuildSentIndexes();
+                    pruneSelectionForSent();
+                    updateSentHistoryUI();
+                    updateSelectionUI();
+                    applyFilters();
+                }
+
+                const pushResult = await pushSentHistoryToRepo();
+                if (pushResult.ok) {
+                    setLocalSendStatus(`Trimise: ${sendData.summary?.sent || 0}. Istoric sincronizat și în repo.`, '#166534');
+                } else if (pushResult.skipped) {
+                    setLocalSendStatus(`Trimise: ${sendData.summary?.sent || 0}. Istoric actualizat local (token GitHub lipsă).`, '#166534');
+                } else {
+                    setLocalSendStatus(`Trimise: ${sendData.summary?.sent || 0}. Repo sync eșuat: ${pushResult.reason}`, '#b45309');
+                }
+
+                clearSelection();
+                await loadData();
+
+                alert(
+                    `Trimitere finalizată.\n\n` +
+                    `Trimise: ${sendData.summary?.sent || 0}\n` +
+                    `Eșuate: ${sendData.summary?.failed || 0}\n` +
+                    `Skip: ${sendData.summary?.skipped || 0}\n` +
+                    `Raport: ${sendData.report_path || '-'}`
+                );
+            } catch (error) {
+                setLocalSendStatus(`Eroare trimitere locală: ${error.message}`, '#b91c1c');
+                alert(
+                    `Nu am putut trimite direct din webapp.\n\n` +
+                    `1. Rulează în Terminal: python3 local_mail_bridge.py\n` +
+                    `2. Lasă-l deschis\n` +
+                    `3. Reîncearcă butonul\n\n` +
+                    `Detalii: ${error.message}`
+                );
+            } finally {
+                sendBtn.disabled = selectedServices.size === 0;
+            }
+        }
+
         function toggleServiceSelection(serviceId, email, name, isChecked) {
             if (isChecked) {
                 selectedServices.add(serviceId);
@@ -1384,6 +1557,7 @@
             const count = selectedServices.size;
             document.getElementById('selectedCount').textContent = `${count} selectate`;
             document.getElementById('sendEmailBtn').disabled = count === 0;
+            document.getElementById('sendDirectBtn').disabled = count === 0;
 
             // Show/hide email actions panel
             const emailActions = document.getElementById('emailActions');
@@ -1431,18 +1605,7 @@
                 return;
             }
 
-            // Construiește lista de recipients din selecția persistentă
-            const recipients = [];
-            selectedServices.forEach(serviceId => {
-                const service = allServices.find(s => s.id === serviceId);
-                if (!service || !service.email) return;
-                if (isServiceAlreadyContacted(service)) return;
-                recipients.push({
-                    service_id: service.id,
-                    email: normalizeEmail(service.email),
-                    name: service.name
-                });
-            });
+            const recipients = buildEligibleRecipientsFromSelection();
 
             if (recipients.length === 0) {
                 alert('Nu mai există adrese eligibile (toate sunt deja contactate sau invalide).');
