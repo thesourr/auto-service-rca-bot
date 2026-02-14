@@ -400,7 +400,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="lastUpdated">-</div>
-                <div class="stat-label">Ultima Actualizare</div>
+                <div class="stat-label">Ultima Actualizare (Data/Ora)</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="sentCount">-</div>
@@ -1056,14 +1056,30 @@
         function updateStats() {
             const emailCount = allServices.filter(s => s.email).length;
             const largeCount = allServices.filter(s => s.size === 'large').length;
-            const lastUpdate = allServices[0]?.last_updated || '';
+            const lastUpdateTimestamp = allServices.reduce((maxTs, service) => {
+                const raw = (service?.last_updated || '').trim();
+                if (!raw) return maxTs;
+                const ts = Date.parse(raw);
+                if (Number.isNaN(ts)) return maxTs;
+                return Math.max(maxTs, ts);
+            }, 0);
             const sentCount = allServices.filter(s => isServiceAlreadyContacted(s)).length;
             const emailPct = allServices.length ? Math.round((emailCount * 100) / allServices.length) : 0;
+            const lastUpdateDisplay = lastUpdateTimestamp
+                ? new Date(lastUpdateTimestamp).toLocaleString('ro-RO', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                })
+                : '-';
 
             document.getElementById('totalCount').textContent = allServices.length;
             document.getElementById('emailCount').textContent = `${emailCount} (${emailPct}%)`;
             document.getElementById('largeCount').textContent = largeCount;
-            document.getElementById('lastUpdated').textContent = lastUpdate ? new Date(lastUpdate).toLocaleDateString('ro-RO') : '-';
+            document.getElementById('lastUpdated').textContent = lastUpdateDisplay;
             document.getElementById('sentCount').textContent = sentCount;
         }
 
