@@ -102,7 +102,7 @@
             color: #475569;
         }
 
-        select, input[type="text"] {
+        select, input[type="text"], input[type="email"], input[type="password"] {
             padding: 10px 15px;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
@@ -111,10 +111,89 @@
             min-width: 200px;
         }
 
-        select:focus, input[type="text"]:focus {
+        select:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
             outline: none;
             border-color: #2563eb;
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .auth-gate {
+            min-height: calc(100vh - 40px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 460px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 28px;
+        }
+
+        .auth-card h2 {
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .auth-card p {
+            color: #475569;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .auth-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .auth-field input {
+            width: 100%;
+        }
+
+        .auth-hint {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .auth-remember {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: #334155;
+            margin-bottom: 14px;
+        }
+
+        .auth-message {
+            margin-top: 12px;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .auth-session {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.875rem;
+        }
+
+        .auth-session strong {
+            font-weight: 600;
         }
 
         .checkbox-group {
@@ -379,10 +458,44 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div id="authGate" class="auth-gate">
+        <div class="auth-card">
+            <h2>Acces privat</h2>
+            <p>Dashboard-ul este restricționat. Sunt acceptate doar token-uri GitHub asociate emailului autorizat.</p>
+
+            <div class="auth-field">
+                <label for="authEmail">Email autorizat</label>
+                <input id="authEmail" type="email" value="ionescuionut18@gmail.com" readonly>
+            </div>
+
+            <div class="auth-field">
+                <label for="githubTokenInput">GitHub Personal Access Token</label>
+                <input id="githubTokenInput" type="password" placeholder="ghp_..." autocomplete="off">
+                <div class="auth-hint">Scop minim necesar: <code>user:email</code>. Pentru funcțiile de commit/workflow păstrează și scope-urile deja folosite.</div>
+            </div>
+
+            <label class="auth-remember">
+                <input type="checkbox" id="rememberAuth">
+                Ține sesiunea în acest browser
+            </label>
+
+            <button class="button" id="authLoginBtn" onclick="authenticateAndLoad()">Autentifică-te</button>
+            <div id="authMessage" class="auth-message">Introdu token-ul pentru verificare.</div>
+        </div>
+    </div>
+
+    <div class="container" id="dashboardContainer" style="display: none;">
         <header>
-            <h1>🚗 Service-uri Auto România</h1>
-            <p>Dashboard cu service-uri auto actualizat automat</p>
+            <div class="header-row">
+                <div>
+                    <h1>🚗 Service-uri Auto România</h1>
+                    <p>Dashboard cu service-uri auto actualizat automat</p>
+                </div>
+                <div class="auth-session">
+                    <strong id="authUserLabel">-</strong>
+                    <button class="button button-secondary" onclick="logout()">Logout</button>
+                </div>
+            </div>
         </header>
 
         <div class="stats" id="stats">
@@ -541,6 +654,9 @@
         const GITHUB_BRANCH = 'main';
         const SCRAPE_WORKFLOW_FILE = 'scrape.yml';
         const LOCAL_MAIL_BRIDGE_URL = 'http://127.0.0.1:8765';
+        const ALLOWED_EMAIL = 'ionescuionut18@gmail.com';
+        const AUTH_PERSISTENT_STORAGE_KEY = 'dashboard_auth_v1';
+        const AUTH_SESSION_STORAGE_KEY = 'dashboard_auth_session_v1';
         let allServices = [];
         let filteredServices = [];
         let currentPage = 1;
@@ -555,6 +671,146 @@
         let sentEmailSet = new Set();
         let sentServiceIdSet = new Set();
         let scrapeRunInProgress = false;
+        let authenticatedGithubToken = null;
+        let authenticatedEmail = null;
+
+        function setAuthMessage(message, color = '#64748b') {
+            const messageEl = document.getElementById('authMessage');
+            if (!messageEl) return;
+            messageEl.textContent = message;
+            messageEl.style.color = color;
+        }
+
+        function parseStoredAuth(raw) {
+            if (!raw) return null;
+            try {
+                const parsed = JSON.parse(raw);
+                if (!parsed || typeof parsed !== 'object' || !parsed.token) return null;
+                return parsed;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function getStoredAuth() {
+            const sessionAuth = parseStoredAuth(sessionStorage.getItem(AUTH_SESSION_STORAGE_KEY));
+            if (sessionAuth) return sessionAuth;
+            return parseStoredAuth(localStorage.getItem(AUTH_PERSISTENT_STORAGE_KEY));
+        }
+
+        function saveAuthSession(token, remember) {
+            const payload = JSON.stringify({
+                token,
+                email: ALLOWED_EMAIL,
+                verified_at: new Date().toISOString()
+            });
+
+            sessionStorage.setItem(AUTH_SESSION_STORAGE_KEY, payload);
+            if (remember) {
+                localStorage.setItem(AUTH_PERSISTENT_STORAGE_KEY, payload);
+            } else {
+                localStorage.removeItem(AUTH_PERSISTENT_STORAGE_KEY);
+            }
+
+            // Compatibilitate cu fluxurile existente care citesc github_token.
+            localStorage.setItem('github_token', token);
+        }
+
+        function clearAuthSession() {
+            sessionStorage.removeItem(AUTH_SESSION_STORAGE_KEY);
+            localStorage.removeItem(AUTH_PERSISTENT_STORAGE_KEY);
+            localStorage.removeItem('github_token');
+            authenticatedGithubToken = null;
+            authenticatedEmail = null;
+        }
+
+        function showAuthGate() {
+            document.getElementById('authGate').style.display = 'flex';
+            document.getElementById('dashboardContainer').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('authGate').style.display = 'none';
+            document.getElementById('dashboardContainer').style.display = 'block';
+            document.getElementById('authUserLabel').textContent = `Autentificat: ${authenticatedEmail || ALLOWED_EMAIL}`;
+        }
+
+        async function verifyGithubTokenForAllowedEmail(token) {
+            const response = await fetch('https://api.github.com/user/emails', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github+json'
+                }
+            });
+
+            if (response.status === 401) {
+                throw new Error('Token invalid sau expirat.');
+            }
+
+            if (!response.ok) {
+                const errorPayload = await response.json().catch(() => ({}));
+                const message = errorPayload?.message || `HTTP ${response.status}`;
+                throw new Error(`Verificarea token-ului a eșuat: ${message}`);
+            }
+
+            const emails = await response.json();
+            if (!Array.isArray(emails)) {
+                throw new Error('Răspuns invalid de la GitHub API.');
+            }
+
+            const allowed = emails.find(item =>
+                normalizeEmail(item?.email || '') === ALLOWED_EMAIL && item?.verified
+            );
+
+            if (!allowed) {
+                throw new Error(`Acces respins. Sunt acceptate doar token-uri legate de ${ALLOWED_EMAIL}.`);
+            }
+
+            return ALLOWED_EMAIL;
+        }
+
+        async function authenticateAndLoad(initialToken = null) {
+            const tokenInput = document.getElementById('githubTokenInput');
+            const rememberCheckbox = document.getElementById('rememberAuth');
+            const loginButton = document.getElementById('authLoginBtn');
+            const token = (initialToken || tokenInput.value || '').trim();
+
+            if (!token) {
+                setAuthMessage('Introdu un GitHub token valid.', '#b91c1c');
+                return false;
+            }
+
+            loginButton.disabled = true;
+            setAuthMessage('Verific accesul...', '#0f766e');
+
+            try {
+                const email = await verifyGithubTokenForAllowedEmail(token);
+                authenticatedGithubToken = token;
+                authenticatedEmail = email;
+                saveAuthSession(token, rememberCheckbox.checked);
+                showDashboard();
+                setAuthMessage('Autentificare reușită.', '#166534');
+                await initializeDashboard();
+                return true;
+            } catch (error) {
+                clearAuthSession();
+                showAuthGate();
+                setAuthMessage(`Eroare autentificare: ${error.message}`, '#b91c1c');
+                return false;
+            } finally {
+                loginButton.disabled = false;
+            }
+        }
+
+        function logout() {
+            if (!confirm('Vrei să te deloghezi din dashboard?')) {
+                return;
+            }
+            clearAuthSession();
+            showAuthGate();
+            document.getElementById('githubTokenInput').value = '';
+            setAuthMessage('Sesiune închisă.', '#64748b');
+        }
 
         function normalizeEmail(value) {
             let email = (value || '').trim().toLowerCase();
@@ -824,10 +1080,10 @@
         }
 
         function getGithubTokenOrThrow() {
-            const token = localStorage.getItem('github_token');
+            const token = authenticatedGithubToken || localStorage.getItem('github_token');
             if (!token) {
                 throw new Error(
-                    'GitHub token lipsește.\n\nSetează în browser console:\nlocalStorage.setItem("github_token", "YOUR_TOKEN")\n\nToken-ul trebuie să aibă acces la Actions (workflow dispatch).'
+                    'GitHub token lipsește.\n\nAutentifică-te din ecranul de login.\n\nToken-ul trebuie să aibă acces la Actions (workflow dispatch).'
                 );
             }
             return token;
@@ -1445,7 +1701,7 @@
         }
 
         async function pushSentHistoryToRepo() {
-            const token = localStorage.getItem('github_token');
+            const token = authenticatedGithubToken || localStorage.getItem('github_token');
             if (!token) {
                 return { ok: false, skipped: true, reason: 'missing_token' };
             }
@@ -1718,9 +1974,9 @@
             // Această funcție va salva queue-ul în data/email_queue.json
             // și va face commit + push pe GitHub
 
-            const token = localStorage.getItem('github_token');
+            const token = authenticatedGithubToken || localStorage.getItem('github_token');
             if (!token) {
-                throw new Error('GitHub token lipsește!\n\nTrebuie să configurezi un Personal Access Token în browser console:\nlocalStorage.setItem("github_token", "YOUR_TOKEN")');
+                throw new Error('GitHub token lipsește!\n\nAutentifică-te din ecranul de login.');
             }
 
             const path = 'data/email_queue.json';
@@ -1799,6 +2055,13 @@
             };
         }
 
+        document.getElementById('githubTokenInput').addEventListener('keydown', event => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                authenticateAndLoad();
+            }
+        });
+
         // Încarcă istoricul local + din repo, apoi datele din GitHub
         async function initializeDashboard() {
             loadSentHistoryFromStorage();
@@ -1806,7 +2069,21 @@
             await loadData();
         }
 
-        initializeDashboard();
+        async function bootAuth() {
+            showAuthGate();
+            const storedAuth = getStoredAuth();
+            if (!storedAuth?.token) {
+                return;
+            }
+
+            document.getElementById('githubTokenInput').value = storedAuth.token;
+            document.getElementById('rememberAuth').checked = Boolean(
+                localStorage.getItem(AUTH_PERSISTENT_STORAGE_KEY)
+            );
+            await authenticateAndLoad(storedAuth.token);
+        }
+
+        bootAuth();
     </script>
 </body>
 </html>
