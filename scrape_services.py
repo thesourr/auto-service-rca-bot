@@ -10,29 +10,60 @@ from bs4 import BeautifulSoup
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 
-# Top 10 orașe în România pentru scraping
-SEARCH_QUERIES = [
+# Zone țintă pentru scraping
+SEARCH_AREAS = [
     # București + Ilfov (zona metropolitană)
-    "service auto București",
-    "service auto sector 1 București",
-    "service auto sector 2 București",
-    "service auto sector 3 București",
-    "service auto sector 4 București",
-    "service auto sector 5 București",
-    "service auto sector 6 București",
-    "service auto Ilfov",
+    "București",
+    "sector 1 București",
+    "sector 2 București",
+    "sector 3 București",
+    "sector 4 București",
+    "sector 5 București",
+    "sector 6 București",
+    "Ilfov",
 
     # Top orașe
-    "service auto Cluj-Napoca",
-    "service auto Timișoara",
-    "service auto Iași",
-    "service auto Constanța",
-    "service auto Craiova",
-    "service auto Brașov",
-    "service auto Galați",
-    "service auto Ploiești",
-    "service auto Oradea",
+    "Cluj-Napoca",
+    "Timișoara",
+    "Iași",
+    "Constanța",
+    "Craiova",
+    "Brașov",
+    "Galați",
+    "Ploiești",
+    "Oradea",
 ]
+
+# Tipuri de căutări pentru a găsi mai multe service-uri relevante
+SEARCH_KEYWORDS = [
+    "service auto",
+    "service multimarca",
+    "diagnoză auto",
+    "electrica auto",
+    "vulcanizare auto",
+    "tinichigerie auto",
+]
+
+
+def build_search_queries():
+    """
+    Construiește lista completă de query-uri (keyword x zonă), fără duplicate.
+    """
+    queries = []
+    seen = set()
+
+    for area in SEARCH_AREAS:
+        for keyword in SEARCH_KEYWORDS:
+            query = f"{keyword} {area}".strip()
+            if query in seen:
+                continue
+            seen.add(query)
+            queries.append(query)
+
+    return queries
+
+
+SEARCH_QUERIES = build_search_queries()
 
 # Regex pentru extragere email
 EMAIL_REGEX = re.compile(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+")
@@ -294,16 +325,8 @@ def build_dedupe_keys(record):
 
     if name and address:
         keys.add(f"name_addr:{name}|{address}")
-    if name and city:
+    if name and city and not address:
         keys.add(f"name_city:{name}|{city}")
-    if phone:
-        keys.add(f"phone:{phone}")
-    if website:
-        keys.add(f"website:{website}")
-    if name and phone:
-        keys.add(f"name_phone:{name}|{phone}")
-    if name and website:
-        keys.add(f"name_website:{name}|{website}")
 
     return keys
 
