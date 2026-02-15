@@ -465,7 +465,7 @@
 
             <div class="auth-field">
                 <label for="authEmail">Email autorizat</label>
-                <input id="authEmail" type="email" value="ionescuionut18@gmail.com" readonly>
+                <input id="authEmail" type="email" value="thesourgta@gmail.com" readonly>
             </div>
 
             <div class="auth-field">
@@ -654,7 +654,7 @@
         const GITHUB_BRANCH = 'main';
         const SCRAPE_WORKFLOW_FILE = 'scrape.yml';
         const LOCAL_MAIL_BRIDGE_URL = 'http://127.0.0.1:8765';
-        const ALLOWED_EMAIL = 'ionescuionut18@gmail.com';
+        const ALLOWED_EMAIL = 'thesourgta@gmail.com';
         const AUTH_PERSISTENT_STORAGE_KEY = 'dashboard_auth_v1';
         const AUTH_SESSION_STORAGE_KEY = 'dashboard_auth_session_v1';
         let allServices = [];
@@ -1893,14 +1893,14 @@
         }
 
         async function sendTestEmail() {
-            if (!confirm('Trimite email de test către ionescuionut18@gmail.com?')) {
+            if (!confirm('Trimite email de test către thesourgta@gmail.com?')) {
                 return;
             }
 
             const queue = {
                 recipients: [{
                     service_id: 'test-email',
-                    email: 'ionescuionut18@gmail.com',
+                    email: 'thesourgta@gmail.com',
                     name: 'Test Service Auto'
                 }],
                 is_test: true,
@@ -1909,7 +1909,7 @@
 
             try {
                 await commitEmailQueue(queue);
-                alert('✅ Email de test programat!\n\nVa fi trimis în 2-3 minute.\nVerifică inbox-ul la ionescuionut18@gmail.com');
+                alert('✅ Email de test programat!\n\nVa fi trimis în 2-3 minute.\nVerifică inbox-ul la thesourgta@gmail.com');
             } catch (error) {
                 alert('❌ Eroare: ' + error.message);
             }
