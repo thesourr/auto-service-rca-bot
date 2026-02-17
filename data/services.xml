@@ -17598,4 +17598,88 @@
     <source>google_places</source>
     <last_updated>2026-02-17T07:11:01Z</last_updated>
   </service>
+  <service>
+    <id>ChIJ37LGdCUDskARpaPOnsU-AF8</id>
+    <name>Vulcanizare LA NUC</name>
+    <size>medium</size>
+    <email />
+    <phone>0784 549 428</phone>
+    <website />
+    <address>Strada Constantin Godeanu 34c, 113046 București, România</address>
+    <city>113046 București</city>
+    <rating>4.7</rating>
+    <reviews>80</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-17T07:17:11Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJz7O6HP0AskARvI8ktFPbzRc</id>
+    <name>Folie Auto Frații Constantin - Folie PPF - din 2010</name>
+    <size>large</size>
+    <email />
+    <phone>0766 610 421</phone>
+    <website>http://www.foliiautollumar.ro/</website>
+    <address>Bulevardul Iuliu Maniu 171 c, 123456 București, România</address>
+    <city>123456 București</city>
+    <rating>4.9</rating>
+    <reviews>1566</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-17T07:20:50Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ3yNYIEwBskARwqqQOjtMsPM</id>
+    <name>AUTOS6</name>
+    <size>medium</size>
+    <email />
+    <phone>0722 309 442</phone>
+    <website />
+    <address>Strada Valea Oltului NR.21, 069167 București, România</address>
+    <city>069167 București</city>
+    <rating>4.8</rating>
+    <reviews>106</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-17T07:20:50Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJM6oXj3ELSUcRlzamxI-Azec</id>
+    <name>Romsystems</name>
+    <size>large</size>
+    <email />
+    <phone>0724 379 279</phone>
+    <website>https://www.romsystems.ro/</website>
+    <address>Bulevardul Muncii 255, 400000 Cluj-Napoca, România</address>
+    <city>400000 Cluj-Napoca</city>
+    <rating>4.7</rating>
+    <reviews>264</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-17T07:23:04Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJ2duwxUpfs0ARRn9IEnYnd64</id>
+    <name>Q-SEVICE II IANCU S FLORIN</name>
+    <size>medium</size>
+    <email />
+    <phone>0744 404 285</phone>
+    <website />
+    <address>Strada Oltului 25, 500449 Hărman, România</address>
+    <city>500449 Hărman</city>
+    <rating>4.8</rating>
+    <reviews>147</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-17T07:26:37Z</last_updated>
+  </service>
+  <service>
+    <id>ChIJE9ViTQBbs0AR9xfY9agqweE</id>
+    <name>Repair Shop</name>
+    <size>small</size>
+    <email />
+    <phone />
+    <website />
+    <address>Strada Henri Coandă, Brașov, România</address>
+    <city>Brașov</city>
+    <rating>5</rating>
+    <reviews>1</reviews>
+    <source>google_places</source>
+    <last_updated>2026-02-17T07:26:38Z</last_updated>
+  </service>
 </services>
